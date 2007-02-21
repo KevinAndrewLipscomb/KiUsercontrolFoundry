@@ -15,7 +15,7 @@ uses
   System.Reflection,
   System.Runtime.CompilerServices,
   Global in 'Global.pas' {Global.TGlobal: System.Web.HttpApplication},
-  drop_down_date in 'usercontrol\ki\drop_down_date.pas';
+  drop_down_date in 'usercontrol\ki\drop_down_date.pas' {drop_down_date.TWebUserControl_drop_down_date: System.Web.UI.UserControl};
 
 //
 // General Information about an assembly is controlled through the following
