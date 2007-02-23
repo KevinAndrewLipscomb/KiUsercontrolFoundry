@@ -6,16 +6,15 @@ library KiUserControlFoundry;
 {%DelphiDotNetAssemblyCompiler '$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Drawing.dll'}
 {%DelphiDotNetAssemblyCompiler '$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Web.dll'}
 {%DelphiDotNetAssemblyCompiler '$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.XML.dll'}
+{%DelphiDotNetAssemblyCompiler 'lib\ki\ki.dll'}
 {%AspMarkupContainer 'Global.asax'}
-{%AspFolderContainer 'usercontrol'}
-{%AspFolderContainer 'usercontrol\ki'}
-{%AspMarkupContainer 'usercontrol\ki\drop_down_date.ascx'}
+{%AspMarkupContainer 'usercontrol\ki\UserControl_drop_down_date.ascx'}
 
 uses
   System.Reflection,
   System.Runtime.CompilerServices,
   Global in 'Global.pas' {Global.TGlobal: System.Web.HttpApplication},
-  drop_down_date in 'usercontrol\ki\drop_down_date.pas' {drop_down_date.TWebUserControl_drop_down_date: System.Web.UI.UserControl};
+  UserControl_drop_down_date in 'usercontrol\ki\UserControl_drop_down_date.pas' {UserControl_drop_down_date.TWebUserControl_drop_down_date: System.Web.UI.UserControl};
 
 //
 // General Information about an assembly is controlled through the following

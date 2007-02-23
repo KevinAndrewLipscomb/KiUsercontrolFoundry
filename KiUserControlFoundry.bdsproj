@@ -123,8 +123,8 @@
 			<Directories Name="UnitOutputDir"></Directories>
 			<Directories Name="PackageDLLOutputDir"></Directories>
 			<Directories Name="PackageDCPOutputDir"></Directories>
-			<Directories Name="SearchPath">c:\windows\microsoft.net\framework\v1.1.4322</Directories>
-			<Directories Name="Packages">c:\windows\microsoft.net\framework\v1.1.4322\System.XML.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Web.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Drawing.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Data.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.dll</Directories>
+			<Directories Name="SearchPath">c:\windows\microsoft.net\framework\v1.1.4322;c:\inetpub\wwwroot\kiusercontrolfoundry--trunk\lib\ki</Directories>
+			<Directories Name="Packages">ki;c:\windows\microsoft.net\framework\v1.1.4322\System.XML.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Web.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Drawing.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.Data.dll;c:\windows\microsoft.net\framework\v1.1.4322\System.dll</Directories>
 			<Directories Name="Conditionals"></Directories>
 			<Directories Name="DebugSourceDirs"></Directories>
 			<Directories Name="UsePackages">True</Directories>
@@ -177,9 +177,6 @@
 			<Options Name="AspNetHTTPAddress"></Options>
 			<Options Name="AspNetCassiniHTTPAddress"></Options>
 		</Options>  
-    
-    
-    
     <FileList>
       <File FileName="Web.config" ContainerId="AspWebConfigContainer" ModuleName="Web"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System" AssemblyName="system" Version="1.0.5000.0" LinkUnits="False"/>
@@ -187,14 +184,13 @@
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Drawing.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.Drawing" AssemblyName="system.drawing" Version="1.0.5000.0" LinkUnits="False"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Web.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.Web" AssemblyName="system.web" Version="1.0.5000.0" LinkUnits="False"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.XML.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.XML" AssemblyName="system.xml" Version="1.0.5000.0" LinkUnits="False"/>
+      <File FileName="lib\ki\ki.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="ki" AssemblyName="ki" Version="1.0.2592.27106" LinkUnits="False"/>
       <File FileName="Global.asax" ContainerId="AspMarkupContainer" ModuleName="Global"/>
-      <File FileName="usercontrol" ContainerId="AspFolderContainer" ModuleName="NewFolder1"/>
-      <File FileName="usercontrol\ki" ContainerId="AspFolderContainer" ModuleName="NewFolder1"/>
-      <File FileName="usercontrol\ki\drop_down_date.ascx" ContainerId="AspMarkupContainer" ModuleName="drop_down_date"/>
+      <File FileName="usercontrol\ki\UserControl_drop_down_date.ascx" ContainerId="AspMarkupContainer" ModuleName="UserControl_drop_down_date"/>
       <File FileName="" ContainerId="" ModuleName="System.Reflection"/>
       <File FileName="" ContainerId="" ModuleName="System.Runtime.CompilerServices"/>
       <File FileName="Global.pas" ContainerId="" ModuleName="Global" Parent="Global.asax"/>
-      <File FileName="usercontrol\ki\drop_down_date.pas" ContainerId="" ModuleName="drop_down_date" Parent="usercontrol\ki\drop_down_date.ascx"/>
+      <File FileName="usercontrol\ki\UserControl_drop_down_date.pas" ContainerId="" ModuleName="UserControl_drop_down_date" Parent="usercontrol\ki\UserControl_drop_down_date.ascx"/>
     </FileList>
   </DelphiDotNet.Personality>
 </BorlandProject>
