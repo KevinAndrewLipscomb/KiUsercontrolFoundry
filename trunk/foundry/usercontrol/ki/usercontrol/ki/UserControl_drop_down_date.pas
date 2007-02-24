@@ -59,9 +59,17 @@ uses
 
 function TWebUserControl_drop_down_date.BeValid: boolean;
 begin
-  BeValid := (DropDownList_month.selectedvalue <> '')
-    and (DropDownList_day.selectedvalue <> '')
-    and (DropDownList_year.selectedvalue <> '');
+  try
+    datetime.Create
+      (
+      int32.Parse(Safe(DropDownList_year.selectedvalue,NUM)),
+      uint32.Parse(Safe(DropDownList_month.selectedvalue,NUM)),
+      uint32.Parse(Safe(DropDownList_day.selectedvalue,NUM))
+      );
+    BeValid := TRUE;
+  except
+    BeValid := FALSE;
+  end;
 end;
 
 procedure TWebUserControl_drop_down_date.Clear;
