@@ -6,7 +6,7 @@
    {
    var prtContent = document.getElementById(strid);
    var WinPrint = window.open('','','left=0,top=0,width=1,height=1,toolbar=0,scrollbars=0,status=0');
-   WinPrint.document.write(prtContent.innerHTML);
+   WinPrint.document.write('<table cellpadding="50"><tr><td>' + prtContent.innerHTML + '</td></tr></table>');
    WinPrint.document.close();
    WinPrint.focus();
    WinPrint.print();
