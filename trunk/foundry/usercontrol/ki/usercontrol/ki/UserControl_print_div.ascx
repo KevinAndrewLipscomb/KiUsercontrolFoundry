@@ -1,5 +1,5 @@
 <%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_print_div.pas" Inherits="UserControl_print_div.TWebUserControl_print_div"%>
-<input id="InputButton_print" type="button" value="HtmlInputButton(UserControl_print_div.controls[0]).value" onClick="javascript:CallPrint('Div_print_area');" runat="server" />
+<small><a href="javascript:void(null);" id="HtmlAnchor_print" onClick="javascript:CallPrint('Div_print_area');" runat="server">[&nbsp;Print&nbsp;form&nbsp;body&nbsp;]</a></small>
 <!-- Must wrap print area in <div id="Div_print_area">...</div> tags. -->
 <script language="javascript">
  function CallPrint(strid)
@@ -11,6 +11,5 @@
    WinPrint.focus();
    WinPrint.print();
    WinPrint.close();
-   prtContent.innerHTML=strOldOne;
    }
 </script>

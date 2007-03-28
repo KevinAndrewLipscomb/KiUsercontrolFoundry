@@ -15,18 +15,38 @@ type
     procedure InitializeComponent;
   {$ENDREGION}
   strict private
+    function GetText: string;
     procedure Page_Load(sender: System.Object; e: System.EventArgs);
+    procedure SetText(text: string);
   strict protected
-    InputButton_print: System.Web.UI.HtmlControls.HtmlInputButton;
+    HtmlAnchor_print: System.Web.UI.HtmlControls.HtmlAnchor;
     procedure OnInit(e: System.EventArgs); override;
   private
     { Private Declarations }
   public
     { Public Declarations }
+  published
+    property text: string read GetText write SetText;
   end;
 
 implementation
- 
+
+{$REGION 'Designer Managed Code'}
+/// <summary>
+/// Required method for Designer support -- do not modify
+/// the contents of this method with the code editor.
+/// </summary>
+procedure TWebUserControl_print_div.InitializeComponent;
+begin
+  Include(Self.Load, Self.Page_Load);
+end;
+{$ENDREGION}
+
+function TWebUserControl_print_div.GetText: string;
+begin
+  GetText := HtmlAnchor_print.innertext;
+end;
+
 procedure TWebUserControl_print_div.Page_Load(sender: System.Object; e: System.EventArgs);
 begin
   // TODO: Put user code to initialize the page here
@@ -41,16 +61,9 @@ begin
   inherited OnInit(e);
 end;
 
-{$REGION 'Designer Managed Code'}
-/// <summary>
-/// Required method for Designer support -- do not modify
-/// the contents of this method with the code editor.
-/// </summary>
-procedure TWebUserControl_print_div.InitializeComponent;
+procedure TWebUserControl_print_div.SetText(text: string);
 begin
-  Include(Self.Load, Self.Page_Load);
+  HtmlAnchor_print.innertext := text;
 end;
-{$ENDREGION}
-
-
+                                     
 end.
