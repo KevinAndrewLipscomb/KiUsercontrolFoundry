@@ -3,7 +3,8 @@ unit UserControl_drop_down_date;
 interface
 
 uses System.Data, System.Drawing, System.Web, System.Web.UI,
-     System.Web.UI.WebControls, System.Web.UI.HtmlControls;
+     System.Web.UI.WebControls, System.Web.UI.HtmlControls,
+     ki_web_ui;
      
 type
   p_type =
@@ -16,7 +17,7 @@ type
     /// Summary description for WebUserControl1.
     /// </summary>
   [ParseChildren(ChildrenAsProperties = true)]
-  TWebUserControl_drop_down_date = class(System.Web.UI.UserControl)
+  TWebUserControl_drop_down_date = class(ki_web_ui.usercontrol_class)
   {$REGION 'Designer Managed Code'}
   strict private
     procedure InitializeComponent;

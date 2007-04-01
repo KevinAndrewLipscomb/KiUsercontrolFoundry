@@ -3,13 +3,15 @@ unit UserControl_print_div;
 interface
 
 uses System.Data, System.Drawing, System.Web, System.Web.UI,
-     System.Web.UI.WebControls, System.Web.UI.HtmlControls;
+     System.Web.UI.WebControls, System.Web.UI.HtmlControls,
+     ki_web_ui;
      
 type
     /// <summary>
     /// Summary description for WebUserControl1.
     /// </summary>
-  TWebUserControl_print_div = class(System.Web.UI.UserControl)
+  [ParseChildren(ChildrenAsProperties = true)]
+  TWebUserControl_print_div = class(ki_web_ui.usercontrol_class)
   {$REGION 'Designer Managed Code'}
   strict private
     procedure InitializeComponent;
@@ -19,7 +21,7 @@ type
     procedure Page_Load(sender: System.Object; e: System.EventArgs);
     procedure SetText(text: string);
   strict protected
-    HtmlAnchor_print: System.Web.UI.HtmlControls.HtmlAnchor;
+    LinkButton_print: System.Web.UI.WebControls.LinkButton;
     procedure OnInit(e: System.EventArgs); override;
   private
     { Private Declarations }
@@ -44,12 +46,12 @@ end;
 
 function TWebUserControl_print_div.GetText: string;
 begin
-  GetText := HtmlAnchor_print.innertext;
+  GetText := LinkButton_print.text;
 end;
 
 procedure TWebUserControl_print_div.Page_Load(sender: System.Object; e: System.EventArgs);
 begin
-  // TODO: Put user code to initialize the page here
+  LinkButton_print.attributes.Add('onclick','javascript:CallPrint(''Div_print_area'');');
 end;
 
 procedure TWebUserControl_print_div.OnInit(e: System.EventArgs);
@@ -63,7 +65,7 @@ end;
 
 procedure TWebUserControl_print_div.SetText(text: string);
 begin
-  HtmlAnchor_print.innertext := text;
+  LinkButton_print.text := text;
 end;
-                                     
+
 end.
