@@ -1,5 +1,5 @@
 <%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_print_div.pas" Inherits="UserControl_print_div.TWebUserControl_print_div"%>
-<small><a href="javascript:void(null);" id="HtmlAnchor_print" onClick="javascript:CallPrint('Div_print_area');" runat="server">[&nbsp;Print&nbsp;form&nbsp;body&nbsp;]</a></small>
+<small><ASP:LinkButton id="LinkButton_print" runat="server" causesvalidation="False">[&nbsp;Print&nbsp;form&nbsp;body&nbsp;]</ASP:LinkButton></small>
 <!-- Must wrap print area in <div id="Div_print_area">...</div> tags. -->
 <script language="javascript">
  function CallPrint(strid)

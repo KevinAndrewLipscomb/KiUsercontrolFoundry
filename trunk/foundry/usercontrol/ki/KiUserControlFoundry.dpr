@@ -10,6 +10,7 @@ library KiUserControlFoundry;
 {%AspMarkupContainer 'Global.asax'}
 {%AspMarkupContainer 'usercontrol\ki\UserControl_drop_down_date.ascx'}
 {%AspMarkupContainer 'usercontrol\ki\UserControl_print_div.ascx'}
+{%AspFolderContainer 'usercontrol\app'}
 
 uses
   System.Reflection,
