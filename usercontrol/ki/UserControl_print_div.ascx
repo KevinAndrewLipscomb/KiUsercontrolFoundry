@@ -1,5 +1,4 @@
 <%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_print_div.pas" Inherits="UserControl_print_div.TWebUserControl_print_div"%>
-<%@ OutputCache Duration="86400" VaryByParam="none" Shared="true" %>
 <small><ASP:LinkButton id="LinkButton_print" runat="server" causesvalidation="False">[&nbsp;Print&nbsp;form&nbsp;body&nbsp;]</ASP:LinkButton></small>
 <!-- Must wrap print area in <div id="Div_print_area">...</div> tags. -->
 <script language="javascript">
