@@ -178,14 +178,6 @@
 			<Options Name="AspNetCassiniHTTPAddress"></Options>
 		</Options>  
     
-    
-    
-    
-    
-    
-    
-    
-    
     <FileList>
       <File FileName="Web.config" ContainerId="AspWebConfigContainer" ModuleName="Web"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System" AssemblyName="system" Version="1.0.5000.0" LinkUnits="False"/>
@@ -193,7 +185,7 @@
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Drawing.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.Drawing" AssemblyName="system.drawing" Version="1.0.5000.0" LinkUnits="False"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Web.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.Web" AssemblyName="system.web" Version="1.0.5000.0" LinkUnits="False"/>
       <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.XML.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="System.XML" AssemblyName="system.xml" Version="1.0.5000.0" LinkUnits="False"/>
-      <File FileName="lib\ki\ki.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="ki" AssemblyName="ki" Version="1.0.2645.22263" LinkUnits="False"/>
+      <File FileName="lib\ki\ki.dll" ContainerId="DelphiDotNetAssemblyCompiler" ModuleName="ki" AssemblyName="ki" Version="1.0.2656.35254" LinkUnits="False"/>
       <File FileName="Global.asax" ContainerId="AspMarkupContainer" ModuleName="Global"/>
       <File FileName="usercontrol\ki\UserControl_drop_down_date.ascx" ContainerId="AspMarkupContainer" ModuleName="UserControl_drop_down_date"/>
       <File FileName="usercontrol\ki\UserControl_print_div.ascx" ContainerId="AspMarkupContainer" ModuleName="UserControl_print_div"/>
