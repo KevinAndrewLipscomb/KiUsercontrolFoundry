@@ -33,6 +33,9 @@ type
 
 implementation
 
+uses
+  ki;
+
 {$REGION 'Designer Managed Code'}
 /// <summary>
 /// Required method for Designer support -- do not modify
@@ -52,6 +55,7 @@ end;
 procedure TWebUserControl_print_div.Page_Load(sender: System.Object; e: System.EventArgs);
 begin
   LinkButton_print.attributes.Add('onclick','javascript:CallPrint(''Div_print_area'');');
+  LinkButton_print.text := ExpandTildePath(LinkButton_print.text);
 end;
 
 procedure TWebUserControl_print_div.OnInit(e: System.EventArgs);
