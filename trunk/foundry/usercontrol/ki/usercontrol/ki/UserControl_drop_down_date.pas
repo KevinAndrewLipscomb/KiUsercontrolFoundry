@@ -9,6 +9,7 @@ uses System.Data, System.Drawing, System.Web, System.Web.UI,
 type
   p_type =
     RECORD
+    be_loaded: boolean;
     min_year: integer;
     max_year: integer;
     selected_value: datetime;
@@ -50,6 +51,7 @@ type
     property maxyear: string read GetMaxYear write SetMaxYear;
     property minyear: string read GetMinYear write SetMinYear;
     property selectedvalue: datetime read GetSelectedValue write SetSelectedValue;
+    function Fresh: TWebUserControl_drop_down_date;
     procedure Clear;
   end;
 
@@ -91,9 +93,8 @@ procedure TWebUserControl_drop_down_date.Page_Load(sender: System.Object; e: Sys
 var
   i: cardinal;
 begin
-  if IsPostback and (session[self.id + '.p'].GetType.namespace = p.GetType.namespace) then begin
-    p := p_type(session[self.id + '.p']);
-  end else begin
+  if not p.be_loaded then begin
+    //
     DropDownList_month.items.Add(ListItem.Create('Jan','1'));
     DropDownList_month.items.Add(ListItem.Create('Feb','2'));
     DropDownList_month.items.Add(ListItem.Create('Mar','3'));
@@ -119,6 +120,9 @@ begin
     end else begin
       SetChildSelectedValues;
     end;
+    //
+    p.be_loaded := TRUE;
+    //
   end;
 end;
 
@@ -129,8 +133,19 @@ begin
   //
   InitializeComponent;
   inherited OnInit(e);
-  p.min_year := datetime.minvalue.Year;
-  p.max_year := datetime.maxvalue.Year;
+  //
+  if IsPostback
+    and (session[self.id + '.p'] <> nil)
+    and (session[self.id + '.p'].GetType.namespace = p.GetType.namespace)
+  then begin
+    p := p_type(session[self.id + '.p']);
+  end else begin
+    //
+    p.be_loaded := FALSE;
+    p.min_year := datetime.minvalue.Year;
+    p.max_year := datetime.maxvalue.Year;
+    //
+  end;
 end;
 
 procedure TWebUserControl_drop_down_date.TWebUserControl_drop_down_date_PreRender(sender: System.Object;
@@ -207,6 +222,12 @@ begin
   end else begin
     p.selected_value := selectedvalue;
   end;
+end;
+
+function TWebUserControl_drop_down_date.Fresh: TWebUserControl_drop_down_date;
+begin
+  session.Remove(self.id + '.p');
+  Fresh := self;
 end;
 
 end.
