@@ -28,6 +28,7 @@ type
     procedure Page_Load(sender: System.Object; e: System.EventArgs);
   strict protected
     Label_application_name: System.Web.UI.WebControls.Label;
+  protected
     procedure OnInit(e: System.EventArgs); override;
   private
     { Private Declarations }
@@ -40,8 +41,7 @@ type
 implementation
 
 uses
-  appcommon,
-  ki,
+  kix,
   System.Collections,
   system.configuration;
 
@@ -86,8 +86,8 @@ end;
 /// </summary>
 procedure TWebUserControl_config_welcome.InitializeComponent;
 begin
-  Include(Self.Load, Self.Page_Load);
   Include(Self.PreRender, Self.TWebUserControl_config_welcome_PreRender);
+  Include(Self.Load, Self.Page_Load);
 end;
 {$ENDREGION}
 

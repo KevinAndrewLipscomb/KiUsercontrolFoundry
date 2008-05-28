@@ -31,6 +31,7 @@ type
   strict protected
     Label_application_name: System.Web.UI.WebControls.Label;
     DataList_trail: System.Web.UI.WebControls.DataList;
+  protected
     procedure OnInit(e: System.EventArgs); override;
   private
     { Private Declarations }
@@ -43,8 +44,7 @@ type
 implementation
 
 uses
-  appcommon,
-  ki,
+  kix,
   System.Collections,
   system.configuration,
   system.io;

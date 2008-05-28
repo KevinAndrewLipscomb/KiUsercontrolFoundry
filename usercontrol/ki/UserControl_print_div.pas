@@ -22,6 +22,7 @@ type
     procedure SetText(text: string);
   strict protected
     LinkButton_print: System.Web.UI.WebControls.LinkButton;
+  protected
     procedure OnInit(e: System.EventArgs); override;
   private
     { Private Declarations }
@@ -34,7 +35,7 @@ type
 implementation
 
 uses
-  ki;
+  kix;
 
 {$REGION 'Designer Managed Code'}
 /// <summary>
