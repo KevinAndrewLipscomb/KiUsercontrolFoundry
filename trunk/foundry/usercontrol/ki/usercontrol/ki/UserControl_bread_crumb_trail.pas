@@ -118,8 +118,7 @@ end;
 procedure TWebUserControl_bread_crumb_trail.TWebUserControl_bread_crumb_trail_PreRender(sender: System.Object;
   e: System.EventArgs);
 begin
-  session.Remove('UserControl_bread_crumb_trail.p');
-  session.Add('UserControl_bread_crumb_trail.p',p);
+  SessionSet('UserControl_bread_crumb_trail.p',p);
 end;
 
 function TWebUserControl_bread_crumb_trail.Fresh: TWebUserControl_bread_crumb_trail;
