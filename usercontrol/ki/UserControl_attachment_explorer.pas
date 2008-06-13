@@ -205,8 +205,7 @@ end;
 procedure TWebUserControl_attachment_explorer.TWebUserControl_attachment_explorer_PreRender(sender: System.Object;
   e: System.EventArgs);
 begin
-  session.Remove('UserControl_attachment_explorer.p');
-  session.Add('UserControl_attachment_explorer.p',p);
+  SessionSet('UserControl_attachment_explorer.p',p);
 end;
 
 function TWebUserControl_attachment_explorer.Fresh: TWebUserControl_attachment_explorer;

@@ -94,8 +94,7 @@ end;
 procedure TWebUserControl_config_welcome.TWebUserControl_config_welcome_PreRender(sender: System.Object;
   e: System.EventArgs);
 begin
-  session.Remove('UserControl_config_welcome.p');
-  session.Add('UserControl_config_welcome.p',p);
+  SessionSet('UserControl_config_welcome.p',p);
 end;
 
 function TWebUserControl_config_welcome.Fresh: TWebUserControl_config_welcome;
