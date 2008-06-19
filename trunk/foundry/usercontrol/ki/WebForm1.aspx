@@ -8,7 +8,7 @@
     <script type="text/javascript" src="js/gradient.js"></script>
   </head>
 
-  <body>
+  <body bgcolor="white">
      <form runat="server">
       <uc1:UserControl_attachment_explorer id="UserControl_attachment_explorer_control" runat="server"></uc1:UserControl_attachment_explorer>
       <p>
