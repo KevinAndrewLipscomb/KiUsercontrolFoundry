@@ -5,7 +5,6 @@
 <html>
   <head runat="server">
     <title></title>
-    <script type="text/javascript" src="js/gradient.js"></script>
   </head>
 
   <body bgcolor="white">
