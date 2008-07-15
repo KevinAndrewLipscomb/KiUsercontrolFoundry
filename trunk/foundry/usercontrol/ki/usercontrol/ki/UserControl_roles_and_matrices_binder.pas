@@ -55,10 +55,10 @@ uses
   system.configuration;
 
 const
-  TSSI_ROLES = 0;
-  TSSI_ROLE_MEMBER_MATRIX = 1;
-  TSSI_ROLE_PRIVILEGE_MATRIX = 2;
-  TSSI_ROLE_NOTIFICATION_MATRIX = 3;
+  TSSI_ROLE_MEMBER_MATRIX = 0;
+  TSSI_ROLE_PRIVILEGE_MATRIX = 1;
+  TSSI_ROLE_NOTIFICATION_MATRIX = 2;
+  TSSI_ROLES = 3;
 
 procedure TWebUserControl_roles_and_matrices_binder.Page_Load(sender: System.Object; e: System.EventArgs);
 begin
@@ -66,6 +66,10 @@ begin
   if not p.be_loaded then begin
     //
     TabStrip_control.selectedindex := p.tab_index;
+    //
+    if Has(string_array(session['privilege_array']),'config-roles-and-matrices') then begin
+      TabStrip_control.items[TSSI_ROLES].enabled := TRUE;
+    end;
     //
     p.be_loaded := TRUE;
     //
@@ -93,13 +97,6 @@ begin
     // Dynamic controls must be re-added on each postback.
     //
     case p.tab_index of
-    TSSI_ROLES:
-      p.content_id := AddIdentifiedControlToPlaceHolder
-        (
-        TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')),
-        'UserControl_role',
-        PlaceHolder_content
-        );
     TSSI_ROLE_MEMBER_MATRIX:
       p.content_id := AddIdentifiedControlToPlaceHolder
         (
@@ -121,17 +118,24 @@ begin
         'UserControl_role_notification_matrix',
         PlaceHolder_content
         );
+    TSSI_ROLES:
+      p.content_id := AddIdentifiedControlToPlaceHolder
+        (
+        TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')),
+        'UserControl_role',
+        PlaceHolder_content
+        );
     end;
   end else begin
     //
     p.be_loaded := FALSE;
     //
-    p.tab_index := TSSI_ROLES;
+    p.tab_index := TSSI_ROLE_MEMBER_MATRIX;
     //
     p.content_id := AddIdentifiedControlToPlaceHolder
       (
-      TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')).Fresh,
-      'UserControl_role',
+      TWebUserControl_role_member_matrix(LoadControl('~/usercontrol/app/UserControl_role_member_matrix.ascx')).Fresh,
+      'UserControl_role_member_matrix',
       PlaceHolder_content
       );
     //
@@ -148,13 +152,6 @@ begin
   PlaceHolder_content.controls.Clear;
   //
   case p.tab_index of
-  TSSI_ROLES:
-    p.content_id := AddIdentifiedControlToPlaceHolder
-      (
-      TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')).Fresh,
-      'UserControl_role',
-      PlaceHolder_content
-      );
   TSSI_ROLE_MEMBER_MATRIX:
     p.content_id := AddIdentifiedControlToPlaceHolder
       (
@@ -174,6 +171,13 @@ begin
       (
       TWebUserControl_role_notification_matrix(LoadControl('~/usercontrol/ki/UserControl_role_notification_matrix.ascx')).Fresh,
       'UserControl_role_notification_matrix',
+      PlaceHolder_content
+      );
+  TSSI_ROLES:
+    p.content_id := AddIdentifiedControlToPlaceHolder
+      (
+      TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')).Fresh,
+      'UserControl_role',
       PlaceHolder_content
       );
   end;
