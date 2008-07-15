@@ -3,6 +3,7 @@ unit UserControl_role;
 interface
 
 uses
+  Class_biz_role_member_map,
   Class_biz_roles,
   ki_web_ui,
   System.Data,
@@ -17,6 +18,7 @@ type
   p_type =
     RECORD
     be_loaded: boolean;
+    biz_role_member_map: TClass_biz_role_member_map;
     biz_roles: TClass_biz_roles;
     END;
   TWebUserControl_role = class(ki_web_ui.usercontrol_class)
@@ -34,6 +36,7 @@ type
   {$ENDREGION}
   strict private
     p: p_type;
+    procedure BindHolders(role_name: string);
     procedure Clear;
     procedure InjectPersistentClientSideScript;
     procedure Page_Load(sender: System.Object; e: System.EventArgs);
@@ -50,6 +53,7 @@ type
     RequiredFieldValidator_name: System.Web.UI.WebControls.RequiredFieldValidator;
     RegularExpressionValidator_tier_id: System.Web.UI.WebControls.RegularExpressionValidator;
     RequiredFieldValidator_soft_hyphenation_text: System.Web.UI.WebControls.RequiredFieldValidator;
+    GridView_holders: System.Web.UI.WebControls.GridView;
   protected
     procedure OnInit(e: System.EventArgs); override;
   private
@@ -204,6 +208,8 @@ begin
     TextBox_name.enabled := FALSE;
     Button_delete.enabled := TRUE;
     //
+    BindHolders(name);
+    //
     PresentRecord := TRUE;
     //
   end;
@@ -224,6 +230,7 @@ begin
     //
     p.be_loaded := FALSE;
     //
+    p.biz_role_member_map := TClass_biz_role_member_map.Create;
     p.biz_roles := TClass_biz_roles.Create;
     //
   end;
@@ -322,6 +329,11 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TWebUserControl_role.BindHolders(role_name: string);
+begin
+  p.biz_role_member_map.BindHolders(role_name,GridView_holders);
 end;
 
 end.
