@@ -36,32 +36,82 @@
     </tr>
   </table>
   <ASP:Button id="Button_submit" text="Submit" runat="server"></ASP:Button>&nbsp;&nbsp;<ASP:Button id="Button_delete" text="Delete" runat="server" enabled="False"></ASP:Button>&nbsp;&nbsp;&nbsp;&nbsp; <uc1:UserControl_print_div id="UserControl_print_div" runat="server"></uc1:UserControl_print_div>
-  <p>&nbsp;</p>
-  <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
+  <p>
+    <table id="Table_holders" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1" visible="False">
+      <tr>
+        <td>
+          <table cellspacing="0" cellpadding="10" border="0">
+            <tr>
+              <td bgcolor="#f5f5f5">
+                <table cellspacing="0" cellpadding="10" width="100%" border="0">
+                  <tr>
+                    <td><strong>Holders (<asp:Label id="Label_num_rows" runat="server"></asp:Label>)</strong></td>
+                    <td><p align="right"><a id="Anchor_quick_message_shortcut" runat="server">QuickMessage</a></p></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <asp:GridView id="GridView_holders" runat="server" autogeneratecolumns="False" bordercolor="Gainsboro" gridlines="None" allowsorting="True" cellpadding="5">
+                      <Columns>
+                        <asp:BoundField datafield="member_name" headertext="Name" sortexpression="member_name%"></asp:BoundField>
+                        <asp:BoundField datafield="agency_designator" headertext="Agency" sortexpression="agency_designator%"></asp:BoundField>
+                        <asp:BoundField datafield="email_address"></asp:BoundField>
+                      </Columns>
+                </asp:GridView>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </p>
+</div>
+<p>
+  <table id="Table_quick_message" runat="server" bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" width="100%" border="1" visible="False">
     <tr>
       <td>
-        <table cellspacing="0" cellpadding="10" border="0">
-          <tr>
-            <td bgcolor="#f5f5f5"><strong>
-                <table cellspacing="0" cellpadding="5" width="100%" border="0">
-                    <tr>
-                      <td><strong>Holders</strong></td>
-                      <td>
-                        <p align="right">QuickMessage</p></td>
-                    </tr>
-                </table>
-              </strong></td>
-          </tr>
+        <table cellspacing="0" cellpadding="10" width="100%" border="0">
+          <tr><td bgcolor="#f5f5f5"><a id="QuickMessage"><strong>QuickMessage</strong></a></td></tr>
           <tr>
             <td>
-              <asp:GridView id="GridView_holders" runat="server" autogeneratecolumns="False" bordercolor="Gainsboro" gridlines="None" allowsorting="True" cellpadding="5" emptydatatext="No role selected or no holders">
-                    <Columns>
-                      <asp:BoundField datafield="member_name" headertext="Name" sortexpression="member_name%"></asp:BoundField>
-                      <asp:BoundField datafield="agency_designator" headertext="Agency" sortexpression="agency_designator%"></asp:BoundField>
-                    </Columns>
-              </asp:GridView></td>
+              <table cellspacing="0" cellpadding="10" width="100%" border="0">
+                <tr>
+                  <td>To:</td>
+                  <td>The parties shown in the above filtered table (see below for resolution)</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Bcc:</td>
+                  <td><ASP:Label id="Label_author_email_address" runat="server"></ASP:Label></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Subject:</td>
+                  <td><ASP:TextBox id="TextBox_quick_message_subject" runat="server" maxlength="255" columns="72"></ASP:TextBox></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td valign="top">Body:</td>
+                  <td><ASP:TextBox id="TextBox_quick_message_body" runat="server" columns="72" rows="18" textmode="MultiLine"></ASP:TextBox></td>
+                  <td nowrap="true" valign="top"><ASP:RequiredFieldValidator id="RequiredFieldValidator_quick_message_body" runat="server" errormessage="Please enter a message body." font-bold="True" controltovalidate="TextBox_quick_message_body">!ERR!</ASP:RequiredFieldValidator></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><ASP:Button id="Button_send" runat="server" text="Send"></ASP:Button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td valign="top"><small><font color="#c0c0c0">Resolves to:</small></font></td>
+                  <td valign="top"><small><ASP:Label id="Label_distribution_list" runat="server" forecolor="Silver"></ASP:Label></small></td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
           </tr>
-        </table></td>
+        </table>
+      </td>
     </tr>
   </table>
-</div>
+</p>
