@@ -71,7 +71,6 @@ type
     Button_send: System.Web.UI.WebControls.Button;
     Table_holders: System.Web.UI.HtmlControls.HtmlTable;
     Table_quick_message: System.Web.UI.HtmlControls.HtmlTable;
-    Anchor_quick_message_shortcut: System.Web.UI.HtmlControls.HtmlAnchor;
     Label_author_email_address: System.Web.UI.WebControls.Label;
     Label_distribution_list: System.Web.UI.WebControls.Label;
   protected
@@ -239,8 +238,6 @@ begin
     //
     BindHolders(name);
     //
-    Anchor_quick_message_shortcut.href := page.request.rawurl + '#QuickMessage';
-    Anchor_quick_message_shortcut.visible := Has(string_array(session['privilege_array']),'send-quickmessages');
     Table_quick_message.visible := Has(string_array(session['privilege_array']),'send-quickmessages');
     //
     PresentRecord := TRUE;
