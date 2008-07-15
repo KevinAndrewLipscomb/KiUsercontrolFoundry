@@ -74,18 +74,21 @@ type
   crosstab_index_type = CI_FIRST_CROSSTAB..MAXINT;
 var
   check_box: CheckBox;
+  crosstab_metadata_rec: crosstab_metadata_rec_type;
   i: crosstab_index_type;
 begin
   for i := CI_FIRST_CROSSTAB to (row.cells.count - 1) do begin
     if row.rowtype = datacontrolrowtype.datarow then begin
       row.cells.item[i].horizontalalign := horizontalalign.CENTER;
+      crosstab_metadata_rec := crosstab_metadata_rec_type(p.crosstab_metadata_rec_arraylist[i - CI_FIRST_CROSSTAB]);
       check_box := CheckBox.Create;
       check_box.autopostback := TRUE;
+      check_box.checked := (row.cells.item[i].text = '1');
       check_box.enabled := Has(string_array(session['privilege_array']),'config-roles-and-matrices');
       check_box.id := EMPTY
       + CHECKBOX_ID_PREFIX_PRIVILEGE_ID + row.cells.item[CI_PRIVILEGE_ID].text
-      + CHECKBOX_ID_PREFIX_ROLE_ID + crosstab_metadata_rec_type(p.crosstab_metadata_rec_arraylist[i - CI_FIRST_CROSSTAB]).id;
-      check_box.checked := (row.cells.item[i].text = '1');
+      + CHECKBOX_ID_PREFIX_ROLE_ID + crosstab_metadata_rec.id;
+      check_box.tooltip := crosstab_metadata_rec.natural_text;
       Include(check_box.checkedchanged,Changed);
       row.cells.item[i].controls.Add(check_box);
       if not p.be_interactive then begin
