@@ -3,8 +3,10 @@ unit UserControl_role;
 interface
 
 uses
+  Class_biz_members,
   Class_biz_role_member_map,
   Class_biz_roles,
+  Class_biz_user,
   ki_web_ui,
   System.Data,
   System.Drawing,
@@ -17,9 +19,14 @@ uses
 type
   p_type =
     RECORD
+    be_gridview_empty: boolean;
     be_loaded: boolean;
+    biz_members: TClass_biz_members;
     biz_role_member_map: TClass_biz_role_member_map;
     biz_roles: TClass_biz_roles;
+    biz_user: TClass_biz_user;
+    distribution_list: string;
+    num_gridview_rows: cardinal;
     END;
   TWebUserControl_role = class(ki_web_ui.usercontrol_class)
   {$REGION 'Designer Managed Code'}
@@ -33,6 +40,9 @@ type
     procedure DropDownList_name_SelectedIndexChanged(sender: System.Object; 
       e: System.EventArgs);
     procedure Button_submit_Click(sender: System.Object; e: System.EventArgs);
+    procedure Button_send_Click(sender: System.Object; e: System.EventArgs);
+    procedure GridView_holders_RowDataBound(sender: System.Object; e: System.Web.UI.WebControls.GridViewRowEventArgs);
+    procedure GridView_holders_RowCreated(sender: System.Object; e: System.Web.UI.WebControls.GridViewRowEventArgs);
   {$ENDREGION}
   strict private
     p: p_type;
@@ -54,6 +64,16 @@ type
     RegularExpressionValidator_tier_id: System.Web.UI.WebControls.RegularExpressionValidator;
     RequiredFieldValidator_soft_hyphenation_text: System.Web.UI.WebControls.RequiredFieldValidator;
     GridView_holders: System.Web.UI.WebControls.GridView;
+    Label_num_rows: System.Web.UI.WebControls.Label;
+    TextBox_quick_message_subject: System.Web.UI.WebControls.TextBox;
+    TextBox_quick_message_body: System.Web.UI.WebControls.TextBox;
+    RequiredFieldValidator_quick_message_body: System.Web.UI.WebControls.RequiredFieldValidator;
+    Button_send: System.Web.UI.WebControls.Button;
+    Table_holders: System.Web.UI.HtmlControls.HtmlTable;
+    Table_quick_message: System.Web.UI.HtmlControls.HtmlTable;
+    Anchor_quick_message_shortcut: System.Web.UI.HtmlControls.HtmlAnchor;
+    Label_author_email_address: System.Web.UI.WebControls.Label;
+    Label_distribution_list: System.Web.UI.WebControls.Label;
   protected
     procedure OnInit(e: System.EventArgs); override;
   private
@@ -68,6 +88,7 @@ implementation
 
 uses
   appcommon,
+  Class_db_role_member_map,
   kix,
   System.Collections,
   system.configuration;
@@ -174,6 +195,14 @@ begin
   //
   if not p.be_loaded then begin
     //
+    if session['mode:report'] = nil then begin
+      Label_author_email_address.text := p.biz_user.EmailAddress;
+    end else begin
+      TextBox_quick_message_subject.enabled := FALSE;
+      TextBox_quick_message_body.enabled := FALSE;
+      RequiredFieldValidator_quick_message_body.enabled := FALSE;
+      Button_send.enabled := FALSE;
+    end;
     //
     RequireConfirmation(Button_delete,'Are you sure you want to delete this record?');
     //
@@ -210,6 +239,10 @@ begin
     //
     BindHolders(name);
     //
+    Anchor_quick_message_shortcut.href := page.request.rawurl + '#QuickMessage';
+    Anchor_quick_message_shortcut.visible := Has(string_array(session['privilege_array']),'send-quickmessages');
+    Table_quick_message.visible := Has(string_array(session['privilege_array']),'send-quickmessages');
+    //
     PresentRecord := TRUE;
     //
   end;
@@ -229,9 +262,13 @@ begin
   end else begin
     //
     p.be_loaded := FALSE;
+    p.distribution_list := EMPTY;
+    p.num_gridview_rows := 0;
     //
+    p.biz_members := TClass_biz_members.Create;
     p.biz_role_member_map := TClass_biz_role_member_map.Create;
     p.biz_roles := TClass_biz_roles.Create;
+    p.biz_user := TClass_biz_user.Create;
     //
   end;
   //
@@ -249,6 +286,9 @@ begin
   Include(Self.DropDownList_name.SelectedIndexChanged, Self.DropDownList_name_SelectedIndexChanged);
   Include(Self.Button_submit.Click, Self.Button_submit_Click);
   Include(Self.Button_delete.Click, Self.Button_delete_Click);
+  Include(Self.GridView_holders.RowDataBound, Self.GridView_holders_RowDataBound);
+  Include(Self.GridView_holders.RowCreated, Self.GridView_holders_RowCreated);
+  Include(Self.Button_send.Click, Self.Button_send_Click);
   Include(Self.PreRender, Self.TWebUserControl_role_PreRender);
   Include(Self.Load, Self.Page_Load);
 end;
@@ -264,6 +304,51 @@ function TWebUserControl_role.Fresh: TWebUserControl_role;
 begin
   session.Remove('UserControl_role.p');
   Fresh := self;
+end;
+
+procedure TWebUserControl_role.GridView_holders_RowCreated(sender: System.Object;
+  e: System.Web.UI.WebControls.GridViewRowEventArgs);
+begin
+  e.row.cells[Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].visible := FALSE;
+end;
+
+procedure TWebUserControl_role.GridView_holders_RowDataBound(sender: System.Object;
+  e: System.Web.UI.WebControls.GridViewRowEventArgs);
+begin
+  if (e.row.rowtype = datacontrolrowtype.datarow)
+    and (e.row.cells[Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].text <> '&nbsp;')
+  then begin
+    p.distribution_list := p.distribution_list + e.row.cells[Class_db_role_member_map.ROLE_HOLDER_EMAIL_ADDRESS_CI].text + COMMA_SPACE;
+    p.num_gridview_rows := p.num_gridview_rows + 1;
+  end;
+end;
+
+procedure TWebUserControl_role.Button_send_Click(sender: System.Object; e: System.EventArgs);
+begin
+  SmtpMailSend
+    (
+    // from
+    configurationmanager.appsettings['sender_email_address'],
+    // to
+    Label_distribution_list.text,
+    // subject
+    TextBox_quick_message_subject.text,
+    // body
+    '-- From ' + p.biz_user.Roles[0] + SPACE + p.biz_members.FirstNameOfMemberId(session['member_id'].tostring) + SPACE
+    + p.biz_members.LastNameOfMemberId(session['member_id'].tostring) + ' (' + p.biz_user.EmailAddress + ') [via '
+    + configurationmanager.appsettings['application_name'] + ']' + NEW_LINE
+    + NEW_LINE
+    + TextBox_quick_message_body.text,
+    // be_html
+    FALSE,
+    // cc
+    EMPTY,
+    // bcc
+    p.biz_user.EmailAddress
+    );
+  TextBox_quick_message_subject.text := EMPTY;
+  TextBox_quick_message_body.text := EMPTY;
+  Alert(kix.LOGIC,kix.NORMAL,'messagsnt','Message sent');
 end;
 
 procedure TWebUserControl_role.Button_submit_Click(sender: System.Object;
@@ -333,7 +418,20 @@ end;
 
 procedure TWebUserControl_role.BindHolders(role_name: string);
 begin
+  //
   p.biz_role_member_map.BindHolders(role_name,GridView_holders);
+  //
+  p.be_gridview_empty := (p.num_gridview_rows = 0);
+  Table_holders.visible := not p.be_gridview_empty;
+  Table_quick_message.visible := Has(string_array(session['privilege_array']),'send-quickmessages') and not p.be_gridview_empty;
+  Label_distribution_list.text := (p.distribution_list + SPACE).TrimEnd([',',' ']);
+  Label_num_rows.text := p.num_gridview_rows.tostring;
+  //
+  // Clear aggregation vars for next bind, if any.
+  //
+  p.distribution_list := EMPTY;
+  p.num_gridview_rows := 0;
+  //
 end;
 
 end.
