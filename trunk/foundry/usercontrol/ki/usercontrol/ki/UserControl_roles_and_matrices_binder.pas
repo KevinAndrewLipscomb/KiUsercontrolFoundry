@@ -121,7 +121,7 @@ begin
     TSSI_ROLES:
       p.content_id := AddIdentifiedControlToPlaceHolder
         (
-        TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')),
+        TWebUserControl_role(LoadControl('~/usercontrol/app/UserControl_role.ascx')),
         'UserControl_role',
         PlaceHolder_content
         );
@@ -176,7 +176,7 @@ begin
   TSSI_ROLES:
     p.content_id := AddIdentifiedControlToPlaceHolder
       (
-      TWebUserControl_role(LoadControl('~/usercontrol/ki/UserControl_role.ascx')).Fresh,
+      TWebUserControl_role(LoadControl('~/usercontrol/app/UserControl_role.ascx')).Fresh,
       'UserControl_role',
       PlaceHolder_content
       );
