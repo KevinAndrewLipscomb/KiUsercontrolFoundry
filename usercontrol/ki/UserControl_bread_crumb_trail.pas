@@ -138,12 +138,23 @@ end;
 procedure TWebUserControl_bread_crumb_trail.DataList_trail_ItemCommand(source: System.Object;
   e: System.Web.UI.WebControls.DataListCommandEventArgs);
 var
+  max_stack_index: cardinal;
+  valid: boolean;
   i: cardinal;
 begin
-  for i := (stack(session['waypoint_stack']).count - 1) downto e.item.itemindex do begin
-    stack(session['waypoint_stack']).Pop;
+  max_stack_index := 0;
+  valid := TRUE;
+  try
+    max_stack_index := stack(session['waypoint_stack']).count - 1;
+  except
+    on ERANGEERROR do valid := FALSE;
   end;
-  server.Transfer(linkbutton(e.commandsource).text + '.aspx');
+  if valid then begin
+    for i := max_stack_index downto e.item.itemindex do begin
+      stack(session['waypoint_stack']).Pop;
+    end;
+    server.Transfer(linkbutton(e.commandsource).text + '.aspx');
+  end;
 end;
 
 end.
