@@ -9,7 +9,8 @@ uses
   UserControl_bread_crumb_trail in 'usercontrol\ki\UserControl_bread_crumb_trail.pas' {UserControl_bread_crumb_trail.TWebUserControl_bread_crumb_trail: ki_web_ui.usercontrol_class},
   UserControl_config_welcome in 'usercontrol\ki\UserControl_config_welcome.pas' {UserControl_config_welcome.TWebUserControl_config_welcome: ki_web_ui.usercontrol_class},
   WebForm1 in 'WebForm1.pas' {WebForm1.TWebForm1: System.Web.UI.Page},
-  UserControl_attachment_explorer in 'usercontrol\ki\UserControl_attachment_explorer.pas' {UserControl_attachment_explorer.TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class};
+  UserControl_attachment_explorer in 'usercontrol\ki\UserControl_attachment_explorer.pas' {UserControl_attachment_explorer.TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class},
+  UserControl_session_interrupted in 'usercontrol\ki\UserControl_session_interrupted.pas' {UserControl_session_interrupted.TWebUserControl_session_interrupted: ki_web_ui.usercontrol_class};
 
 //
 // General Information about an assembly is controlled through the following

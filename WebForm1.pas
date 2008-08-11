@@ -21,8 +21,6 @@ type
     procedure PostDelete(basename: string);
   strict protected
     UserControl_attachment_explorer_control: TWebUserControl_attachment_explorer;
-    Button1: System.Web.UI.WebControls.Button;
-    Label1: System.Web.UI.WebControls.Label;
   protected
     procedure OnInit(e: EventArgs); override;
   private
@@ -44,7 +42,6 @@ uses
 /// </summary>
 procedure TWebForm1.InitializeComponent;
 begin
-  Include(Self.Button1.Click, Self.Button1_Click);
   Include(Self.Load, Self.Page_Load);
 end;
 {$ENDREGION}
