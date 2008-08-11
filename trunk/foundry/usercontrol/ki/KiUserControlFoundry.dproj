@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <DCC_EnabledPackages>true</DCC_EnabledPackages>
-    <DCC_UsePackage>ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.XML.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Web.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Data.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.configuration.dll</DCC_UsePackage>
+    <DCC_UsePackage>ki;"C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\System.Web.Extensions.dll";C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.XML.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Web.Services.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Web.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Data.dll;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.configuration.dll</DCC_UsePackage>
     <DCC_DCCCompiler>DCCIL</DCC_DCCCompiler>
     <DCC_DependencyCheckOutputName>bin\KiUserControlFoundry.dll</DCC_DependencyCheckOutputName>
   </PropertyGroup>
@@ -31,9 +31,9 @@
     <DCC_DebugInfoInExe>True</DCC_DebugInfoInExe>
     <DCC_DebugVN>True</DCC_DebugVN>
     <DCC_ExeOutput>bin</DCC_ExeOutput>
-    <DCC_UnitSearchPath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727</DCC_UnitSearchPath>
-    <DCC_ResourcePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727</DCC_ResourcePath>
-    <DCC_IncludePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727</DCC_IncludePath>
+    <DCC_UnitSearchPath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_UnitSearchPath>
+    <DCC_ResourcePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_ResourcePath>
+    <DCC_IncludePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_IncludePath>
     <DCC_Define>DEBUG</DCC_Define>
     <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
     <DCC_RangeChecking>True</DCC_RangeChecking>
@@ -85,6 +85,13 @@
       <AssemblyTag>$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.Web.dll</AssemblyTag>
       <LinkUnits>False</LinkUnits>
     </Reference>
+    <Reference Include="$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.Web.Services.dll">
+      <AssemblyName>System.Web.Services</AssemblyName>
+      <Version>2.0.0.0</Version>
+      <HintPath>$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.Web.Services.dll</HintPath>
+      <AssemblyTag>$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.Web.Services.dll</AssemblyTag>
+      <LinkUnits>False</LinkUnits>
+    </Reference>
     <Reference Include="$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.XML.dll">
       <AssemblyName>system.xml</AssemblyName>
       <Version>2.0.0.0</Version>
@@ -92,9 +99,16 @@
       <AssemblyTag>$(SystemRoot)\Microsoft.NET\Framework\v2.0.50727\System.XML.dll</AssemblyTag>
       <LinkUnits>False</LinkUnits>
     </Reference>
+    <Reference Include="C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\System.Web.Extensions.dll">
+      <AssemblyName>System.Web.Extensions</AssemblyName>
+      <Version>1.0.61025.0</Version>
+      <HintPath>C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\System.Web.Extensions.dll</HintPath>
+      <AssemblyTag>C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025\System.Web.Extensions.dll</AssemblyTag>
+      <LinkUnits>False</LinkUnits>
+    </Reference>
     <Reference Include="lib\ki\ki.dll">
       <AssemblyName>ki</AssemblyName>
-      <Version>1.0.3070.30057</Version>
+      <Version>1.0.3145.27804</Version>
       <HintPath>lib\ki\ki.dll</HintPath>
       <AssemblyTag>lib\ki\ki.dll</AssemblyTag>
       <LinkUnits>False</LinkUnits>
@@ -134,6 +148,11 @@
       <Form>UserControl_print_div.TWebUserControl_print_div</Form>
       <DesignClass>ki_web_ui.usercontrol_class</DesignClass>
     </DCCReference>
+    <DCCReference Include="usercontrol\ki\UserControl_session_interrupted.pas">
+      <DependentUpon>usercontrol\ki\UserControl_session_interrupted.ascx</DependentUpon>
+      <Form>UserControl_session_interrupted.TWebUserControl_session_interrupted</Form>
+      <DesignClass>ki_web_ui.usercontrol_class</DesignClass>
+    </DCCReference>
     <DCCReference Include="WebForm1.pas">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <Form>WebForm1.TWebForm1</Form>
@@ -145,6 +164,7 @@
     <None Include="usercontrol\ki\UserControl_config_welcome.ascx" />
     <None Include="usercontrol\ki\UserControl_drop_down_date.ascx" />
     <None Include="usercontrol\ki\UserControl_print_div.ascx" />
+    <None Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
     <None Include="Web.config" />
     <None Include="WebForm1.aspx" />
   </ItemGroup>
