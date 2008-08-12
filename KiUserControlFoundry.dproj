@@ -25,15 +25,16 @@
     <DCC_RangeChecking>True</DCC_RangeChecking>
     <DCC_TypedAtParameter>True</DCC_TypedAtParameter>
     <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_StrictVarStrings>False</DCC_StrictVarStrings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Version>7.0</Version>
     <DCC_DebugInfoInExe>True</DCC_DebugInfoInExe>
     <DCC_DebugVN>True</DCC_DebugVN>
     <DCC_ExeOutput>bin</DCC_ExeOutput>
-    <DCC_UnitSearchPath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_UnitSearchPath>
-    <DCC_ResourcePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_ResourcePath>
-    <DCC_IncludePath>$(BDS)\LIB\DEBUG;$(BDS)\lib\Debug\Indy10;c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_IncludePath>
+    <DCC_UnitSearchPath>c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_UnitSearchPath>
+    <DCC_ResourcePath>c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_ResourcePath>
+    <DCC_IncludePath>c:\inetpub\wwwroot\kiusercontrolfoundry\lib\ki;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft ASP.NET\ASP.NET 2.0 AJAX Extensions\v1.0.61025</DCC_IncludePath>
     <DCC_Define>DEBUG</DCC_Define>
     <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
     <DCC_RangeChecking>True</DCC_RangeChecking>
@@ -41,6 +42,7 @@
     <DCC_OpenStringParams>False</DCC_OpenStringParams>
     <DCC_TypedAtParameter>True</DCC_TypedAtParameter>
     <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+    <DCC_StrictVarStrings>False</DCC_StrictVarStrings>
   </PropertyGroup>
   <ProjectExtensions>
     <Borland.Personality>DelphiDotNet.Personality</Borland.Personality>
@@ -108,7 +110,7 @@
     </Reference>
     <Reference Include="lib\ki\ki.dll">
       <AssemblyName>ki</AssemblyName>
-      <Version>1.0.3145.27804</Version>
+      <Version>1.0.3145.35855</Version>
       <HintPath>lib\ki\ki.dll</HintPath>
       <AssemblyTag>lib\ki\ki.dll</AssemblyTag>
       <LinkUnits>False</LinkUnits>
