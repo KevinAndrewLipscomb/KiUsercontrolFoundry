@@ -10,7 +10,7 @@
           <td>
             <p>This can be caused by inactivity, or by configuration changes on the host server.</p>
             <p>As a security precaution, you have been logged out.</p>
-            <p>Please <ASP:HyperLink id="HyperLink_login" runat="server" font-bold="True" navigateurl="login.aspx">log in</ASP:HyperLink> again to continue using the application.</p>
+            <p>Please <ASP:HyperLink id="HyperLink_login" runat="server" font-bold="True" navigateurl="~/login.aspx">log in</ASP:HyperLink>again to continue using the application.</p>
           </td>
         </tr>
       </table>

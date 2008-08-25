@@ -18,6 +18,8 @@ type
     procedure InitializeComponent;
   {$ENDREGION}
   strict private
+  strict protected
+    HyperLink_login: System.Web.UI.WebControls.HyperLink;
   protected
     procedure OnInit(e: System.EventArgs); override;
   private
