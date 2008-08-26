@@ -50,6 +50,7 @@ type
     DropDownList_month: System.Web.UI.WebControls.DropDownList;
     DropDownList_day: System.Web.UI.WebControls.DropDownList;
     Button_today: System.Web.UI.WebControls.Button;
+    UpdatePanel_control: System.Web.UI.UpdatePanel;
   protected
     procedure OnInit(e: System.EventArgs); override;
   private
@@ -182,8 +183,8 @@ end;
 procedure TWebUserControl_drop_down_date.InitializeComponent;
 begin
   Include(Self.Button_today.Click, Self.Button_today_Click);
-  Include(Self.Load, Self.Page_Load);
   Include(Self.PreRender, Self.TWebUserControl_drop_down_date_PreRender);
+  Include(Self.Load, Self.Page_Load);
 end;
 {$ENDREGION}
 
