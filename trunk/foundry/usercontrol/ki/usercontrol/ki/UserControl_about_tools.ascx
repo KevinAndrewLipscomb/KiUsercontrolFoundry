@@ -6,7 +6,6 @@
   <li>ASP.NET AJAX extensions</li>
   <li>ASP.NET AJAX Control Toolkit</li>
   <li>Core Services DebugBar and CompanionJS</li>
-  <li>Steve Stchur's SmartScroller</li>
   <li>MySQL database management system</li>
   <li>Subversion version control system</li>
   <li>TortoiseSVN</li>
