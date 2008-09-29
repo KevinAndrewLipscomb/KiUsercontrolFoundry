@@ -3,6 +3,6 @@
 <blockquote>
   Kalips'o Infogistics LLC<br>
   d/b/a <a href="http://frompaper2web.com" target="_blank">FromPaper2Web.com</a><br>
-  Kevin Lipscomb, President
+  Kevin Andrew Lipscomb, President
 </blockquote>
 
