@@ -12,18 +12,13 @@ const
   NONE: datetime = datetime.minvalue;
 
 type
+  //
+  // Support types
+  //
   consistently_representable_year_range = MIN_CONSISTENTLY_REPRESENTABLE_YEAR..MAX_CONSISTENTLY_REPRESENTABLE_YEAR;
-  p_type =
-    RECORD
-    be_enabled: boolean;
-    be_loaded: boolean;
-    min_year: consistently_representable_year_range;
-    max_year: consistently_representable_year_range;
-    selected_value: datetime;
-    END;
-    /// <summary>
-    /// Summary description for WebUserControl1.
-    /// </summary>
+  //
+  // Class type
+  //
   [ParseChildren(ChildrenAsProperties = true)]
   TWebUserControl_drop_down_date = class(ki_web_ui.usercontrol_class)
   {$REGION 'Designer Managed Code'}
@@ -33,6 +28,16 @@ type
       e: System.EventArgs);
     procedure Button_today_Click(sender: System.Object; e: System.EventArgs);
   {$ENDREGION}
+  strict private
+    type
+      p_type =
+        RECORD
+        be_enabled: boolean;
+        be_loaded: boolean;
+        min_year: consistently_representable_year_range;
+        max_year: consistently_representable_year_range;
+        selected_value: datetime;
+        END;
   strict private
     p: p_type;
     function BeEnabled: boolean;
@@ -53,10 +58,6 @@ type
     UpdatePanel_control: System.Web.UI.UpdatePanel;
   protected
     procedure OnInit(e: System.EventArgs); override;
-  private
-    { Private Declarations }
-  public
-    { Public Declarations }
   published
     property enabled: boolean read BeEnabled write SetEnabled;
     property isvalid: boolean read BeValid;
@@ -152,11 +153,9 @@ begin
   InitializeComponent;
   inherited OnInit(e);
   //
-  if IsPostback
-    and (session[self.id + '.p'] <> nil)
-    and (session[self.id + '.p'].GetType.namespace = p.GetType.namespace)
-  then begin
-    p := p_type(session[self.id + '.p']);
+  if assigned(session[self.uniqueid + '.p']) then begin
+    p := p_type(session[self.uniqueid + '.p']);
+    p.be_loaded := FALSE;
   end else begin
     //
     p.be_enabled := TRUE;
@@ -171,8 +170,8 @@ end;
 procedure TWebUserControl_drop_down_date.TWebUserControl_drop_down_date_PreRender(sender: System.Object;
   e: System.EventArgs);
 begin
-  session.Remove(self.id + '.p');
-  session.Add(self.id + '.p',p);
+  session.Remove(self.uniqueid + '.p');
+  session.Add(self.uniqueid + '.p',p);
 end;
 
 {$REGION 'Designer Managed Code'}
