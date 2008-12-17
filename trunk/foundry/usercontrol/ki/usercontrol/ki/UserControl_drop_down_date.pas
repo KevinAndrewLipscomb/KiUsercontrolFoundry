@@ -153,9 +153,8 @@ begin
   InitializeComponent;
   inherited OnInit(e);
   //
-  if assigned(session[self.uniqueid + '.p']) then begin
+  if IsPostBack and assigned(session[self.uniqueid + '.p']) then begin
     p := p_type(session[self.uniqueid + '.p']);
-    p.be_loaded := FALSE;
   end else begin
     //
     p.be_enabled := TRUE;
