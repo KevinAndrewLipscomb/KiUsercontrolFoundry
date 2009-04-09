@@ -159,8 +159,8 @@ begin
     //
     p.be_enabled := TRUE;
     p.be_loaded := FALSE;
-    p.min_year := MIN_CONSISTENTLY_REPRESENTABLE_YEAR;
-    p.max_year := MAX_CONSISTENTLY_REPRESENTABLE_YEAR;
+    p.min_year := datetime.Today.Year - 1;
+    p.max_year := datetime.Today.Year + 1;
     p.selected_value := NONE;
     //
   end;
