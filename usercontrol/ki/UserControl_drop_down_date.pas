@@ -33,7 +33,6 @@ type
       p_type =
         RECORD
         be_enabled: boolean;
-        be_loaded: boolean;
         min_year: consistently_representable_year_range;
         max_year: consistently_representable_year_range;
         selected_value: datetime;
@@ -112,7 +111,10 @@ procedure TWebUserControl_drop_down_date.Page_Load(sender: System.Object; e: Sys
 var
   i: cardinal;
 begin
-  if not p.be_loaded then begin
+  //
+  if (DropDownList_month.items.count = 0) then begin
+    //
+    // All three dropdownlists should have empty item collections, so rebuild them.
     //
     DropDownList_month.items.Add(ListItem.Create('Jan','1'));
     DropDownList_month.items.Add(ListItem.Create('Feb','2'));
@@ -136,13 +138,12 @@ begin
       DropDownList_month.items.Insert(0,ListItem.Create('',''));
       DropDownList_day.items.Insert(0,ListItem.Create('',''));
       DropDownList_year.items.Insert(0,ListItem.Create('',''));
-    end else begin
-      SetChildSelectedValues;
     end;
     //
-    p.be_loaded := TRUE;
-    //
   end;
+  //
+  SetChildSelectedValues;
+  //
 end;
 
 procedure TWebUserControl_drop_down_date.OnInit(e: System.EventArgs);
@@ -153,12 +154,11 @@ begin
   InitializeComponent;
   inherited OnInit(e);
   //
-  if IsPostBack and assigned(session[self.uniqueid + '.p']) then begin
+  if assigned(session[self.uniqueid + '.p']) then begin
     p := p_type(session[self.uniqueid + '.p']);
   end else begin
     //
     p.be_enabled := TRUE;
-    p.be_loaded := FALSE;
     p.min_year := datetime.Today.Year - 1;
     p.max_year := datetime.Today.Year + 1;
     p.selected_value := NONE;
