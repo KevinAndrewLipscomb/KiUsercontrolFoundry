@@ -138,11 +138,11 @@ begin
       DropDownList_month.items.Insert(0,ListItem.Create('',''));
       DropDownList_day.items.Insert(0,ListItem.Create('',''));
       DropDownList_year.items.Insert(0,ListItem.Create('',''));
+    end else begin
+      SetChildSelectedValues;
     end;
     //
   end;
-  //
-  SetChildSelectedValues;
   //
 end;
 
