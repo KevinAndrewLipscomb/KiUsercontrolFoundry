@@ -5,9 +5,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 namespace UserControl_session_interrupted
 {
-    public class TWebUserControl_session_interrupted: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_session_interrupted: ki_web_ui.usercontrol_class
     {
-        protected System.Web.UI.WebControls.HyperLink HyperLink_login = null;
         protected override void OnInit(System.EventArgs e)
         {
             // Required for Designer support

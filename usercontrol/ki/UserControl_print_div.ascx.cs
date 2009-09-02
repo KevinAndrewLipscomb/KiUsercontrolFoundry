@@ -5,7 +5,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 namespace UserControl_print_div
 {
-    public class TWebUserControl_print_div: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_print_div: ki_web_ui.usercontrol_class
     {
         public string text
         {
@@ -18,7 +18,6 @@ namespace UserControl_print_div
             LinkButton_print.Text = value;
           }
         }
-        protected System.Web.UI.WebControls.LinkButton LinkButton_print = null;
         // / <summary>
         // / Required method for Designer support -- do not modify
         // / the contents of this method with the code editor.
@@ -29,7 +28,7 @@ namespace UserControl_print_div
             this.Load += this.Page_Load;
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             LinkButton_print.Attributes.Add("onclick", "javascript:CallPrint(\'Div_print_area\');");
 

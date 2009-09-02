@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_print_div.ascx.cs" Inherits="UserControl_print_div.TWebUserControl_print_div"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_print_div.ascx.cs" Inherits="UserControl_print_div.TWebUserControl_print_div"%>
 <small><ASP:LinkButton id="LinkButton_print" runat="server" causesvalidation="False"><IMG src="~/protected/image/print16_h.png" alt="Print form body - Must enable pop-ups" border="0" height="16" width="16" /></ASP:LinkButton></small>
 <!-- Must wrap print area in <div id="Div_print_area">...</div> tags. -->
 <script type="text/javascript">

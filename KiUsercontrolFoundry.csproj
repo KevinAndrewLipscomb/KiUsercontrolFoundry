@@ -68,6 +68,7 @@
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -78,9 +79,15 @@
       <DependentUpon>UserControl_about_by.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\ki\UserControl_about_by.ascx.designer.cs">
+      <DependentUpon>UserControl_about_by.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\ki\UserControl_about_tools.ascx.cs">
       <DependentUpon>UserControl_about_tools.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_about_tools.ascx.designer.cs">
+      <DependentUpon>UserControl_about_tools.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_attachment_explorer.ascx.cs">
       <DependentUpon>UserControl_attachment_explorer.ascx</DependentUpon>
@@ -90,9 +97,15 @@
       <DependentUpon>UserControl_bread_crumb_trail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\ki\UserControl_bread_crumb_trail.ascx.designer.cs">
+      <DependentUpon>UserControl_bread_crumb_trail.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\ki\UserControl_config_welcome.ascx.cs">
       <DependentUpon>UserControl_config_welcome.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_config_welcome.ascx.designer.cs">
+      <DependentUpon>UserControl_config_welcome.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_date.ascx.cs">
       <DependentUpon>UserControl_drop_down_date.ascx</DependentUpon>
@@ -102,13 +115,29 @@
       <DependentUpon>UserControl_print_div.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\ki\UserControl_print_div.ascx.designer.cs">
+      <DependentUpon>UserControl_print_div.ascx</DependentUpon>
+    </Compile>
     <Compile Include="usercontrol\ki\UserControl_session_interrupted.ascx.cs">
       <DependentUpon>UserControl_session_interrupted.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="usercontrol\ki\UserControl_session_interrupted.ascx.designer.cs">
+      <DependentUpon>UserControl_session_interrupted.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

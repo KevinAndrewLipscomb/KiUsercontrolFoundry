@@ -12,19 +12,20 @@ using System.Configuration;
 
 namespace WebForm1
 {
-    public class TWebForm1: System.Web.UI.Page
+    public partial class TWebForm1: System.Web.UI.Page
     {
+
         // / <summary>
         // / Required method for Designer support -- do not modify
         // / the contents of this method with the code editor.
         // / </summary>
         private void InitializeComponent()
         {
-            this.Load += new System.EventHandler(this.Page_Load);
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
+        Label_my_great_label.Text = DateTime.Now.ToString();
         }
 
         protected override void OnInit(EventArgs e)

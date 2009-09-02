@@ -12,12 +12,11 @@ namespace UserControl_bread_crumb_trail
         public bool be_loaded;
     } // end p_type
 
-    public class TWebUserControl_bread_crumb_trail: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_bread_crumb_trail: ki_web_ui.usercontrol_class
     {
         private p_type p;
         protected System.Web.UI.WebControls.Label Label_application_name = null;
-        protected System.Web.UI.WebControls.DataList DataList_trail = null;
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             uint i;
             uint num_waypoints;

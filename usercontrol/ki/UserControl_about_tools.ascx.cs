@@ -12,7 +12,7 @@ namespace UserControl_about_tools
         public bool be_loaded;
     } // end p_type
 
-    public class TWebUserControl_about_tools: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_about_tools: ki_web_ui.usercontrol_class
     {
         private p_type p;
         private void InjectPersistentClientSideScript()
@@ -95,7 +95,7 @@ namespace UserControl_about_tools
 
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
             {
