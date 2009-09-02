@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<%@ Page language="c#" Debug="true" Codebehind="WebForm1.aspx.cs" AutoEventWireup="false" Inherits="WebForm1.TWebForm1" %>
+<%@ Page language="c#" Debug="true" Codebehind="WebForm1.aspx.cs" AutoEventWireup="True" Inherits="WebForm1.TWebForm1" %>
+<%@ Register src="usercontrol/ki/UserControl_about_by.ascx" tagname="UserControl_about_by" tagprefix="uc1" %>
 <html>
   <head runat="server">
     <title></title>
@@ -8,6 +9,13 @@
   </head>
   <body bgcolor="white">
     <form runat="server">
+    <p>
+      The current time is:
+      <asp:Label ID="Label_my_great_label" runat="server"></asp:Label>
+      .</p>
+    <p>
+      &nbsp;</p>
+    <uc1:UserControl_about_by ID="UserControl_about_by1" runat="server" />
     </form>
   </body>
 </html>

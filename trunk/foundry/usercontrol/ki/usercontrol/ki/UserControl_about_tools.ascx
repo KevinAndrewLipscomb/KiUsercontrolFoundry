@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_about_tools.ascx.cs" Inherits="UserControl_about_tools.TWebUserControl_about_tools"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_about_tools.ascx.cs" Inherits="UserControl_about_tools.TWebUserControl_about_tools"%>
 <p>Built and controlled using:</p>
 <ul>
   <li>CodeGear Delphi integrated development environment (Object Pascal programming language)</li>

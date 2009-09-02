@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_session_interrupted.ascx.cs" Inherits="UserControl_session_interrupted.TWebUserControl_session_interrupted"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_session_interrupted.ascx.cs" Inherits="UserControl_session_interrupted.TWebUserControl_session_interrupted"%>
 <table bordercolor="#dcdcdc" cellspacing="0" cellpadding="0" border="1">
   <tr>
     <td>
