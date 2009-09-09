@@ -1,3 +1,4 @@
+using kix;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -7,6 +8,7 @@ using System.Collections;
 
 
 using System.IO;
+using System.Collections.Specialized;
 namespace UserControl_attachment_explorer
 {
     public struct p_type
@@ -52,40 +54,40 @@ namespace UserControl_attachment_explorer
         public on_delete_type OnDelete;
         private void InjectPersistentClientSideScript()
         {
-            // EstablishClientSideFunction(EL);
-            // EstablishClientSideFunction(KGS_TO_LBS);
-            // EstablishClientSideFunction(LBS_TO_KGS);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.KGS_TO_LBS);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.LBS_TO_KGS);
             // EstablishClientSideFunction
             // (
             // 'RecalculateDependentValues()',
-            // kix.Units.kix.EMPTY
+            // k.EMPTY
             // + 'El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gross_landed_weight_in_pounds.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_lbs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gross_landed_weight_in_kgs.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_kgs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value - El("' + TextBox_franchise_in_lbs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value - El("' + TextBox_franchise_in_kgs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_percent_gain_or_loss.clientid + '").value ='
             // +  ' Math.round(El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_net_invoiced_in_lbs.clientid + '").value*100*100)/100;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_monetary_gain_or_loss.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value*El("' + TextBox_unit_price_in_cents_per_pound.clientid + '").value;'
             // );
@@ -135,7 +137,7 @@ namespace UserControl_attachment_explorer
             if (!p.be_loaded)
             {
 
-                Image_paperclip.Src = kix.Units.kix.ExpandTildePath(Image_paperclip.Src);
+                Image_paperclip.Src = k.ExpandTildePath(Image_paperclip.Src);
                 p.be_loaded = true;
             }
             InjectPersistentClientSideScript();
@@ -167,7 +169,7 @@ namespace UserControl_attachment_explorer
                 p.be_enabled = true;
                 p.be_loaded = false;
 
-                p.path = kix.Units.kix.EMPTY;
+                p.path = k.EMPTY;
             }
 
         }
@@ -207,7 +209,7 @@ namespace UserControl_attachment_explorer
         {
 
 
-            if (path != kix.Units.kix.EMPTY)
+            if (path != k.EMPTY)
             {
                 p.path = path;
             }
@@ -221,7 +223,7 @@ namespace UserControl_attachment_explorer
 
         public void Bind()
         {
-            Bind(kix.Units.kix.EMPTY);
+            Bind(k.EMPTY);
         }
 
         public string Save()
@@ -229,7 +231,7 @@ namespace UserControl_attachment_explorer
             string result;
             string s;
 
-            s = kix.Units.kix.EMPTY;
+            s = k.EMPTY;
             if (FileUpload_control.HasFile)
             {
                 s = System.IO.Path.GetFileName(FileUpload_control.FileName);
@@ -254,9 +256,9 @@ namespace UserControl_attachment_explorer
             {
 
 
-                ((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text = kix.Units.kix.EMPTY + kix.Units.kix.ExpandTildePath("<IMG src=\"~/usercontrol/ki/image/paperclip_16x16.gif\" alt=\"Attachment\" border=\"0\" height=\"16\" width=\"16\" />") + System.IO.Path.GetFileName(e.Row.Cells[Units.UserControl_attachment_explorer.TCI_ITEM_INITIALLY].Text);
+                ((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text = k.EMPTY + k.ExpandTildePath("<IMG src=\"~/usercontrol/ki/image/paperclip_16x16.gif\" alt=\"Attachment\" border=\"0\" height=\"16\" width=\"16\" />") + System.IO.Path.GetFileName(e.Row.Cells[Units.UserControl_attachment_explorer.TCI_ITEM_INITIALLY].Text);
 
-                ((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text = kix.Units.kix.ExpandTildePath(((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text);
+                ((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[Units.UserControl_attachment_explorer.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text);
                 e.Row.Cells[Units.UserControl_attachment_explorer.TCI_ITEM_INITIALLY].Visible = false;
                 tablecell_spacer = new TableCell();
                 tablecell_spacer.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";

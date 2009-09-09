@@ -80,12 +80,3 @@ namespace UserControl_config_welcome
     } // end TWebUserControl_config_welcome
 
 }
-
-namespace UserControl_config_welcome.Units
-{
-    public class UserControl_config_welcome
-    {
-    } // end UserControl_config_welcome
-
-}
-
