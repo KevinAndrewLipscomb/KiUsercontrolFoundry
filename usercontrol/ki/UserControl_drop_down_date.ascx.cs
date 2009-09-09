@@ -1,3 +1,13 @@
+using MySql.Data.MySqlClient;
+
+
+
+
+
+
+
+
+using kix;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -41,7 +51,7 @@ namespace UserControl_drop_down_date
 
 
 
-                new DateTime(int.Parse(kix.Units.kix.Safe(DropDownList_year.SelectedValue, kix.safe_hint_type.NUM)), int.Parse(kix.Units.kix.Safe(DropDownList_month.SelectedValue, kix.safe_hint_type.NUM)), int.Parse(kix.Units.kix.Safe(DropDownList_day.SelectedValue, kix.safe_hint_type.NUM)));
+                new DateTime(int.Parse(k.Safe(DropDownList_year.SelectedValue, k.safe_hint_type.NUM)), int.Parse(k.Safe(DropDownList_month.SelectedValue, k.safe_hint_type.NUM)), int.Parse(k.Safe(DropDownList_day.SelectedValue, k.safe_hint_type.NUM)));
                 result = true;
             }
             catch {
@@ -102,9 +112,9 @@ namespace UserControl_drop_down_date
 
                 p.selected_value = new DateTime
                   (
-                  int.Parse(kix.Units.kix.Safe(DropDownList_year.SelectedValue, kix.safe_hint_type.NUM)),
-                  int.Parse(kix.Units.kix.Safe(DropDownList_month.SelectedValue, kix.safe_hint_type.NUM)),
-                  int.Parse(kix.Units.kix.Safe(DropDownList_day.SelectedValue, kix.safe_hint_type.NUM))
+                  int.Parse(k.Safe(DropDownList_year.SelectedValue, k.safe_hint_type.NUM)),
+                  int.Parse(k.Safe(DropDownList_month.SelectedValue, k.safe_hint_type.NUM)),
+                  int.Parse(k.Safe(DropDownList_day.SelectedValue, k.safe_hint_type.NUM))
                   );
                 result = p.selected_value;
             }
@@ -168,7 +178,7 @@ namespace UserControl_drop_down_date
             uint i;
             if ((DropDownList_month.Items.Count == 0))
             {
-                // All three dropdownlists should have kix.Units.kix.EMPTY item collections, so rebuild them.
+                // All three dropdownlists should have k.EMPTY item collections, so rebuild them.
                 DropDownList_month.Items.Add(new ListItem("Jan", "1"));
                 DropDownList_month.Items.Add(new ListItem("Feb", "2"));
                 DropDownList_month.Items.Add(new ListItem("Mar", "3"));

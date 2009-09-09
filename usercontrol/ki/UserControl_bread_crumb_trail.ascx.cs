@@ -7,7 +7,7 @@ using System.Collections;
 using System.IO;
 namespace UserControl_bread_crumb_trail
 {
-    public struct p_type
+    struct p_type
     {
         public bool be_loaded;
     } // end p_type
@@ -15,7 +15,6 @@ namespace UserControl_bread_crumb_trail
     public partial class TWebUserControl_bread_crumb_trail: ki_web_ui.usercontrol_class
     {
         private p_type p;
-        protected System.Web.UI.WebControls.Label Label_application_name = null;
         protected void Page_Load(object sender, System.EventArgs e)
         {
             uint i;
@@ -121,7 +120,7 @@ namespace UserControl_bread_crumb_trail
 
 
 
-                for (i = (uint)(((Session["waypoint_stack"]) as Stack).Count - 1); i >= Math.Max(e.Item.ItemIndex, 0); i-- )
+                for (i = (uint)(((Session["waypoint_stack"]) as Stack).Count - 1); i > Math.Max(e.Item.ItemIndex, 0); i-- )
                 {
 
                     ((Session["waypoint_stack"]) as Stack).Pop();
@@ -135,12 +134,3 @@ namespace UserControl_bread_crumb_trail
     } // end TWebUserControl_bread_crumb_trail
 
 }
-
-namespace UserControl_bread_crumb_trail.Units
-{
-    public class UserControl_bread_crumb_trail
-    {
-    } // end UserControl_bread_crumb_trail
-
-}
-

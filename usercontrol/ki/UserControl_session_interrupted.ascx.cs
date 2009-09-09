@@ -26,12 +26,3 @@ namespace UserControl_session_interrupted
     } // end TWebUserControl_session_interrupted
 
 }
-
-namespace UserControl_session_interrupted.Units
-{
-    public class UserControl_session_interrupted
-    {
-    } // end UserControl_session_interrupted
-
-}
-

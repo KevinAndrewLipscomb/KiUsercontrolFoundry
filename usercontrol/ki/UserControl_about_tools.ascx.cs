@@ -1,3 +1,4 @@
+using kix;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -17,40 +18,40 @@ namespace UserControl_about_tools
         private p_type p;
         private void InjectPersistentClientSideScript()
         {
-            // EstablishClientSideFunction(EL);
-            // EstablishClientSideFunction(KGS_TO_LBS);
-            // EstablishClientSideFunction(LBS_TO_KGS);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.KGS_TO_LBS);
+            // EstablishClientSideFunction(k.client_side_function_enumeral_type.LBS_TO_KGS);
             // EstablishClientSideFunction
             // (
             // 'RecalculateDependentValues()',
-            // kix.Units.kix.EMPTY
+            // k.EMPTY
             // + 'El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gross_landed_weight_in_pounds.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_lbs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gross_landed_weight_in_kgs.clientid + '").value - El("' + TextBox_gross_invoiced_weight_in_kgs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_lbs.clientid + '").value - El("' + TextBox_franchise_in_lbs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_gain_or_loss_in_kgs.clientid + '").value - El("' + TextBox_franchise_in_kgs.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_lbs.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_actual_gain_or_loss_per_bale_in_kgs.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_kgs.clientid + '").value/El("' + TextBox_bales.clientid + '").value;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_percent_gain_or_loss.clientid + '").value ='
             // +  ' Math.round(El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value/El("' + TextBox_net_invoiced_in_lbs.clientid + '").value*100*100)/100;'
-            // + kix.Units.kix.NEW_LINE
+            // + k.NEW_LINE
             // + 'El("' + TextBox_monetary_gain_or_loss.clientid + '").value ='
             // +  ' El("' + TextBox_actual_gain_or_loss_in_lbs.clientid + '").value*El("' + TextBox_unit_price_in_cents_per_pound.clientid + '").value;'
             // );
@@ -157,12 +158,3 @@ namespace UserControl_about_tools
     } // end TWebUserControl_about_tools
 
 }
-
-namespace UserControl_about_tools.Units
-{
-    public class UserControl_about_tools
-    {
-    } // end UserControl_about_tools
-
-}
-

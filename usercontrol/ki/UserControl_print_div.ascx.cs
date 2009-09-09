@@ -1,3 +1,4 @@
+using kix;
 using System;
 using System.Web;
 using System.Web.UI;
@@ -32,7 +33,7 @@ namespace UserControl_print_div
         {
             LinkButton_print.Attributes.Add("onclick", "javascript:CallPrint(\'Div_print_area\');");
 
-            LinkButton_print.Text = kix.Units.kix.ExpandTildePath(LinkButton_print.Text);
+            LinkButton_print.Text = k.ExpandTildePath(LinkButton_print.Text);
         }
 
         protected override void OnInit(System.EventArgs e)
@@ -45,12 +46,3 @@ namespace UserControl_print_div
     } // end TWebUserControl_print_div
 
 }
-
-namespace UserControl_print_div.Units
-{
-    public class UserControl_print_div
-    {
-    } // end UserControl_print_div
-
-}
-
