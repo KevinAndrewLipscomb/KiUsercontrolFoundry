@@ -1,23 +1,26 @@
 using MySql.Data.MySqlClient;
-
-
-
-
-
-
-
-
 using kix;
 using System;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
 namespace UserControl_drop_down_date
 {
+    public static class UserControl_drop_down_date_Static
+      {
+      // Driven by MySQL DATETIME type and .Net DateTime type
+      public const int MIN_CONSISTENTLY_REPRESENTABLE_YEAR = 1000;
+      // Driven by MySQL DATETIME type
+      public const int MAX_CONSISTENTLY_REPRESENTABLE_YEAR = 9999;
+      // Driven by MySQL DATETIME type and .Net DateTime type
+      public static DateTime NONE = DateTime.MinValue;
+      } // end UserControl_drop_down_date
+
     // Class type
     // [ParseChildren(ChildrenAsProperties = true)]
-    public class TWebUserControl_drop_down_date: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_drop_down_date: ki_web_ui.usercontrol_class
     {
         public bool enabled
         {
@@ -74,7 +77,7 @@ namespace UserControl_drop_down_date
 
 
 
-            p.max_year = Math.Min(uint.Parse(value), (uint)(Units.UserControl_drop_down_date.MAX_CONSISTENTLY_REPRESENTABLE_YEAR));
+            p.max_year = Math.Min(uint.Parse(value), (uint)(UserControl_drop_down_date_Static.MAX_CONSISTENTLY_REPRESENTABLE_YEAR));
           }
         }
         public string minyear
@@ -91,7 +94,7 @@ namespace UserControl_drop_down_date
 
 
 
-            p.min_year = Math.Max(uint.Parse(value), Units.UserControl_drop_down_date.MIN_CONSISTENTLY_REPRESENTABLE_YEAR);
+            p.min_year = Math.Max(uint.Parse(value), UserControl_drop_down_date_Static.MIN_CONSISTENTLY_REPRESENTABLE_YEAR);
           }
         }
         public DateTime selectedvalue
@@ -120,16 +123,16 @@ namespace UserControl_drop_down_date
             }
             else
             {
-                result = Units.UserControl_drop_down_date.NONE;
+                result = UserControl_drop_down_date_Static.NONE;
             }
             return result;
           }
           set {
             DateTime min_datetime;
             DateTime max_datetime;
-            if (value == Units.UserControl_drop_down_date.NONE)
+            if (value == UserControl_drop_down_date_Static.NONE)
             {
-                p.selected_value = Units.UserControl_drop_down_date.NONE;
+                p.selected_value = UserControl_drop_down_date_Static.NONE;
             }
             else
             {
@@ -152,20 +155,15 @@ namespace UserControl_drop_down_date
           }
         }
         private p_type p;
-        protected System.Web.UI.WebControls.DropDownList DropDownList_year = null;
-        protected System.Web.UI.WebControls.DropDownList DropDownList_month = null;
-        protected System.Web.UI.WebControls.DropDownList DropDownList_day = null;
-        protected System.Web.UI.WebControls.Button Button_today = null;
-        protected System.Web.UI.UpdatePanel UpdatePanel_control = null;
         public void Clear()
         {
-            p.selected_value = Units.UserControl_drop_down_date.NONE;
+            p.selected_value = UserControl_drop_down_date_Static.NONE;
             DropDownList_month.SelectedIndex = 0;
             DropDownList_day.SelectedIndex = 0;
             DropDownList_year.SelectedIndex = 0;
         }
 
-        private void Button_today_Click(object sender, System.EventArgs e)
+        protected void Button_today_Click(object sender, System.EventArgs e)
         {
 
 
@@ -173,7 +171,7 @@ namespace UserControl_drop_down_date
             SetChildSelectedValues();
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             uint i;
             if ((DropDownList_month.Items.Count == 0))
@@ -199,7 +197,7 @@ namespace UserControl_drop_down_date
                 {
                     DropDownList_year.Items.Add(new ListItem(i.ToString(), i.ToString()));
                 }
-                if (p.selected_value == Units.UserControl_drop_down_date.NONE)
+                if (p.selected_value == UserControl_drop_down_date_Static.NONE)
                 {
                     DropDownList_month.Items.Insert(0, new ListItem("", ""));
                     DropDownList_day.Items.Insert(0, new ListItem("", ""));
@@ -237,7 +235,7 @@ namespace UserControl_drop_down_date
 
 
                 p.max_year = (uint)(DateTime.Today.Year + 1);
-                p.selected_value = Units.UserControl_drop_down_date.NONE;
+                p.selected_value = UserControl_drop_down_date_Static.NONE;
             }
         }
 
@@ -259,16 +257,15 @@ namespace UserControl_drop_down_date
         // / </summary>
         private void InitializeComponent()
         {
-            this.Button_today.Click += new System.EventHandler(this.Button_today_Click);
 
             this.PreRender += this.TWebUserControl_drop_down_date_PreRender;
 
-            this.Load += this.Page_Load;
+            //this.Load += this.Page_Load;
         }
 
         private void SetChildSelectedValues()
         {
-            if (p.selected_value == Units.UserControl_drop_down_date.NONE)
+            if (p.selected_value == UserControl_drop_down_date_Static.NONE)
             {
                 DropDownList_month.SelectedIndex =  -1;
                 DropDownList_day.SelectedIndex =  -1;
@@ -308,22 +305,6 @@ namespace UserControl_drop_down_date
         } // end p_type
 
     } // end TWebUserControl_drop_down_date
-
-}
-
-namespace UserControl_drop_down_date.Units
-{
-    public class UserControl_drop_down_date
-    {
-    // Driven by MySQL DATETIME type and .Net DateTime type
-
-
-        public const int MIN_CONSISTENTLY_REPRESENTABLE_YEAR = 1000;
-        // Driven by MySQL DATETIME type
-        public const int MAX_CONSISTENTLY_REPRESENTABLE_YEAR = 9999;
-        // Driven by MySQL DATETIME type and .Net DateTime type
-        public static DateTime NONE = DateTime.MinValue;
-    } // end UserControl_drop_down_date
 
 }
 
