@@ -134,7 +134,7 @@ namespace UserControl_about_by
         private void InitializeComponent()
         {
 
-            this.Load += this.Page_Load;
+            //this.Load += this.Page_Load;
 
             this.PreRender += this.TWebUserControl_about_by_PreRender;
         }

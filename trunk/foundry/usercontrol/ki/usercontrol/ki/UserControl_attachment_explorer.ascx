@@ -1,4 +1,4 @@
-<%@ Control Language="c#" AutoEventWireup="false" Codebehind="UserControl_attachment_explorer.ascx.cs" Inherits="UserControl_attachment_explorer.TWebUserControl_attachment_explorer"%>
+<%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_attachment_explorer.ascx.cs" Inherits="UserControl_attachment_explorer.TWebUserControl_attachment_explorer"%>
 <%@ Register TagPrefix="asp" Namespace="System.Web.UI" Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
 <asp:UpdatePanel id="UpdatePanel_control" runat="server">
   <ContentTemplate>
@@ -9,7 +9,7 @@
       </tr>
       <tr>
         <td>
-          <asp:GridView id="GridView_attachments" runat="server" showheader="False" cellpadding="2" gridlines="None">
+          <asp:GridView id="GridView_attachments" runat="server" showheader="False" cellpadding="2" gridlines="None" onselectedindexchanged="GridView_attachments_SelectedIndexChanged">
             <Columns>
               <asp:ButtonField commandname="Select" text="Button"></asp:ButtonField>
               <asp:CommandField deletetext="&lt;IMG src=&quot;~/usercontrol/ki/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" showdeletebutton="True"></asp:CommandField>

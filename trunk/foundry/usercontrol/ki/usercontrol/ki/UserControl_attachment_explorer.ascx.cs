@@ -19,7 +19,7 @@ namespace UserControl_attachment_explorer
     } // end p_type
 
     // [ParseChildren(ChildrenAsProperties = true)]
-    public class TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class
     {
 
         public bool enabled
@@ -47,9 +47,6 @@ namespace UserControl_attachment_explorer
           }
         }
         private p_type p;
-        protected System.Web.UI.WebControls.FileUpload FileUpload_control = null;
-        protected System.Web.UI.WebControls.GridView GridView_attachments = null;
-        protected System.Web.UI.HtmlControls.HtmlImage Image_paperclip = null;
         public delegate void on_delete_type(string basename);
         public on_delete_type OnDelete;
         private void InjectPersistentClientSideScript()
@@ -132,7 +129,7 @@ namespace UserControl_attachment_explorer
 
         }
 
-        private void Page_Load(object sender, System.EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)
             {
@@ -181,12 +178,11 @@ namespace UserControl_attachment_explorer
         private void InitializeComponent()
         {
             this.GridView_attachments.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_attachments_RowDataBound);
-            this.GridView_attachments.SelectedIndexChanged += new System.EventHandler(this.GridView_attachments_SelectedIndexChanged);
             this.GridView_attachments.RowDeleting += new System.Web.UI.WebControls.GridViewDeleteEventHandler(this.GridView_attachments_RowDeleting);
 
             this.PreRender += this.TWebUserControl_attachment_explorer_PreRender;
 
-            this.Load += this.Page_Load;
+            //this.Load += this.Page_Load;
         }
 
         private void TWebUserControl_attachment_explorer_PreRender(object sender, System.EventArgs e)
@@ -242,7 +238,7 @@ namespace UserControl_attachment_explorer
             return result;
         }
 
-        private void GridView_attachments_SelectedIndexChanged(object sender, System.EventArgs e)
+        protected void GridView_attachments_SelectedIndexChanged(object sender, System.EventArgs e)
         {
 
             FileDownload(Page, GridView_attachments.SelectedRow.Cells[Units.UserControl_attachment_explorer.TCI_ITEM_SUBSEQUENTLY].Text);
