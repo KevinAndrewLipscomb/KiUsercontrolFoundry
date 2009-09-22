@@ -7,7 +7,7 @@ using System.Collections;
 using System.IO;
 namespace UserControl_bread_crumb_trail
 {
-    struct p_type
+    public struct p_type
     {
         public bool be_loaded;
     } // end p_type
