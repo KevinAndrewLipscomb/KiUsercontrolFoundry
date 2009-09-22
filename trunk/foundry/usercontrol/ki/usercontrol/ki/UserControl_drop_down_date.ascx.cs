@@ -1,4 +1,3 @@
-using MySql.Data.MySqlClient;
 using kix;
 using System;
 using System.Web;
