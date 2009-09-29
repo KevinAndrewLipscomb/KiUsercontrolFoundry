@@ -120,7 +120,7 @@ namespace UserControl_bread_crumb_trail
 
 
 
-                for (i = (uint)(((Session["waypoint_stack"]) as Stack).Count - 1); i > Math.Max(e.Item.ItemIndex, 0); i-- )
+                for (i = (uint)(((Session["waypoint_stack"]) as Stack).Count - 1); i >= Math.Max(e.Item.ItemIndex, 0); i-- )
                 {
 
                     ((Session["waypoint_stack"]) as Stack).Pop();
