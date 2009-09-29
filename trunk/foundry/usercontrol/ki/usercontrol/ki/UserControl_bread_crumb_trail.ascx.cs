@@ -32,7 +32,7 @@ namespace UserControl_bread_crumb_trail
                     if (num_waypoints > 0)
                     {
                         q = new Queue();
-                        for (i = 1; i <= waypoint_stack.Count; i ++ )
+                        for (i = 1; i <= num_waypoints; i ++ )
                         {
                             q.Enqueue(Path.GetFileNameWithoutExtension(waypoint_stack.Pop().ToString()));
                         }
