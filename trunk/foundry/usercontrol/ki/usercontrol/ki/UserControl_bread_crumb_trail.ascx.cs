@@ -112,24 +112,17 @@ namespace UserControl_bread_crumb_trail
         }
 
         private void DataList_trail_ItemCommand(object source, System.Web.UI.WebControls.DataListCommandEventArgs e)
-        {
-            uint i;
-
-            if (((Session["waypoint_stack"]) as Stack).Count > 0)
+          {
+          if (((Session["waypoint_stack"]) as Stack).Count > 0)
             {
-
-
-
-                for (i = (uint)(((Session["waypoint_stack"]) as Stack).Count - 1); i >= Math.Max(e.Item.ItemIndex, 0); i-- )
-                {
-
-                    ((Session["waypoint_stack"]) as Stack).Pop();
-                }
-
-
-                Server.Transfer(((e.CommandSource) as LinkButton).Text + ".aspx");
+            int i;
+            for (i = ((Session["waypoint_stack"]) as Stack).Count - 1; i >= Math.Max(e.Item.ItemIndex, 0); i-- )
+              {
+              ((Session["waypoint_stack"]) as Stack).Pop();
+              }
+            Server.Transfer(((e.CommandSource) as LinkButton).Text + ".aspx");
             }
-        }
+          }
 
     } // end TWebUserControl_bread_crumb_trail
 
