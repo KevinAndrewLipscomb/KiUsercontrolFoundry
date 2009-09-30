@@ -1,11 +1,9 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_about_tools.ascx.cs" Inherits="UserControl_about_tools.TWebUserControl_about_tools"%>
 <p>Built and controlled using:</p>
 <ul>
-  <li>CodeGear Delphi integrated development environment (Object Pascal programming language)</li>
+  <li>Microsoft Visual Web Developer 2008 Express Edition (C# programming language)</li>
   <li>Microsoft ASP.NET web application framework</li>
-  <li>ASP.NET AJAX extensions</li>
   <li>ASP.NET AJAX Control Toolkit</li>
-  <li>Core Services DebugBar and CompanionJS</li>
   <li>MySQL database management system</li>
   <li>Subversion version control system</li>
   <li>TortoiseSVN</li>
@@ -24,6 +22,5 @@
   <li>Natara Bonsai</li>
   <li>Palm software</li>
   <li>PDFCreator</li>
-  <li>Peganza ICARUS</li>
   <li>PGP</li>
   <li>Xemacs</li></ul>
