@@ -118,7 +118,7 @@ namespace UserControl_about_tools
                 p = (p_type)(Session["UserControl_about_tools.p"]);
 
 
-                p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_about_tools");
+                p.be_loaded = IsPostBack && ((Session["M_PlaceHolder_content"] as string) == "UserControl_about_tools");
             }
             else
             {
