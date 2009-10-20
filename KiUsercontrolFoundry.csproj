@@ -75,6 +75,7 @@
     <Content Include="usercontrol\ki\UserControl_bread_crumb_trail.ascx" />
     <Content Include="usercontrol\ki\UserControl_config_welcome.ascx" />
     <Content Include="usercontrol\ki\UserControl_drop_down_date.ascx" />
+    <Content Include="usercontrol\ki\UserControl_drop_down_time_of_day.ascx" />
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
     <Content Include="Web.config" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_date.ascx.designer.cs">
       <DependentUpon>UserControl_drop_down_date.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_drop_down_time_of_day.ascx.cs">
+      <DependentUpon>UserControl_drop_down_time_of_day.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_drop_down_time_of_day.ascx.designer.cs">
+      <DependentUpon>UserControl_drop_down_time_of_day.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_print_div.ascx.cs">
       <DependentUpon>UserControl_print_div.ascx</DependentUpon>
