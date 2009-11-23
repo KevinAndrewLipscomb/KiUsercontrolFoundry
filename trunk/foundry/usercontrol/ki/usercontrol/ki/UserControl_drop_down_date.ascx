@@ -4,11 +4,12 @@
   <ContentTemplate>
     <table cellspacing="0" cellpadding="0" border="0">
       <tr>
-        <td nowrap="true">
+        <td nowrap="true" valign="middle">
           <ASP:DropDownList id="DropDownList_month" runat="server"></ASP:DropDownList>
           <ASP:DropDownList id="DropDownList_day" runat="server"></ASP:DropDownList>
           <ASP:DropDownList id="DropDownList_year" runat="server"></ASP:DropDownList>
           <ASP:Button id="Button_today" runat="server" text="Today" causesvalidation="False" onclick="Button_today_Click"></ASP:Button>
+          <asp:CustomValidator ID="CustomValidator_date" runat="server" ErrorMessage="Please enter a valid Date." Font-Bold="True" onservervalidate="CustomValidator_date_ServerValidate">!ERR!</asp:CustomValidator>
         </td>
       </tr>
     </table>
