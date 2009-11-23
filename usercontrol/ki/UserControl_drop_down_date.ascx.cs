@@ -301,7 +301,12 @@ namespace UserControl_drop_down_date
             public uint min_year;
             public uint max_year;
             public DateTime selected_value;
-        } // end p_type
+        }
+
+    protected void CustomValidator_date_ServerValidate(object source, ServerValidateEventArgs args)
+      {
+      args.IsValid = (selectedvalue == UserControl_drop_down_date_Static.NONE) || isvalid;
+      }
 
     } // end TWebUserControl_drop_down_date
 
