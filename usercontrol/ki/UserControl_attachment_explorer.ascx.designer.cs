@@ -23,6 +23,15 @@ namespace UserControl_attachment_explorer {
         protected global::System.Web.UI.WebControls.GridView GridView_attachments;
         
         /// <summary>
+        /// Panel_new control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel_new;
+        
+        /// <summary>
         /// Image_paperclip control.
         /// </summary>
         /// <remarks>

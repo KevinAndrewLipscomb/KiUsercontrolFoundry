@@ -1,5 +1,6 @@
 using kix;
 using System.IO;
+using System.Web;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 
@@ -16,15 +17,49 @@ namespace UserControl_attachment_explorer
 
   public struct p_type
     {
+    public bool be_empty;
     public bool be_enabled;
     public bool be_loaded;
+    public bool be_ok_to_add;
+    public bool be_ok_to_delete;
+    public string[] directory_file_string_array;
     public string path;
     }
 
   // [ParseChildren(ChildrenAsProperties = true)]
   public partial class TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class
     {
-
+    public bool be_ok_to_add
+      {
+      get
+        {
+        return p.be_ok_to_add;
+        }
+      set
+        {
+        p.be_ok_to_add = value;
+        SessionSet(ClientID + ".p", p);
+        }
+      }
+    public bool be_ok_to_delete
+      {
+      get
+        {
+        return p.be_ok_to_delete;
+        }
+      set
+        {
+        p.be_ok_to_delete = value;
+        SessionSet(ClientID + ".p", p);
+        }
+      }
+    public bool be_empty
+      {
+      get
+        {
+        return p.be_empty;
+        }
+      }
     public bool enabled
       {
       get
@@ -36,6 +71,7 @@ namespace UserControl_attachment_explorer
         FileUpload_control.Enabled = value;
         GridView_attachments.Enabled = value;
         p.be_enabled = value;
+        SessionSet(ClientID + ".p", p);
         }
       }
     public string path
@@ -47,6 +83,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.path = value;
+        SessionSet(ClientID + ".p", p);
         }
       }
     private p_type p;
@@ -138,9 +175,10 @@ namespace UserControl_attachment_explorer
       if (!p.be_loaded)
         {
         Image_paperclip.Src = k.ExpandTildePath(Image_paperclip.Src);
-        Bind();
         p.be_loaded = true;
         }
+      Bind();
+      Panel_new.Visible = p.be_ok_to_add;
       InjectPersistentClientSideScript();
       }
 
@@ -149,14 +187,18 @@ namespace UserControl_attachment_explorer
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (IsPostBack && (Session[this.ID + ".p"] != null) && (Session[this.ID + ".p"].GetType().Namespace == p.GetType().Namespace))
+      if (IsPostBack && (Session[ClientID + ".p"] != null) && (Session[ClientID + ".p"].GetType().Namespace == p.GetType().Namespace))
         {
-        p = (p_type)(Session[this.ID + ".p"]);
+        p = (p_type)(Session[ClientID + ".p"]);
         }
       else
         {
+        p.be_empty = true;
         p.be_enabled = true;
         p.be_loaded = false;
+        p.be_ok_to_add = false;
+        p.be_ok_to_delete = false;
+        p.directory_file_string_array = null;
         p.path = k.EMPTY;
         }
       }
@@ -175,7 +217,7 @@ namespace UserControl_attachment_explorer
 
     private void TWebUserControl_attachment_explorer_PreRender(object sender, System.EventArgs e)
       {
-      SessionSet("UserControl_attachment_explorer.p", p);
+      SessionSet(ClientID + ".p", p);
       }
 
     public TWebUserControl_attachment_explorer Fresh()
@@ -192,19 +234,16 @@ namespace UserControl_attachment_explorer
         }
       if (Directory.Exists(p.path))
         {
-        GridView_attachments.DataSource = Directory.GetFiles(p.path);
+        p.directory_file_string_array = Directory.GetFiles(p.path);
+        GridView_attachments.DataSource = p.directory_file_string_array;
         GridView_attachments.DataBind();
         }
+      p.be_empty = ((p.directory_file_string_array == null) || (p.directory_file_string_array.Length == 0));
       }
 
     public void Bind()
       {
       Bind(k.EMPTY);
-      }
-
-    protected void GridView_attachments_SelectedIndexChanged(object sender, System.EventArgs e)
-      {
-      FileDownload(Page, GridView_attachments.SelectedRow.Cells[UserControl_attachment_explorer_Static.TCI_ITEM_SUBSEQUENTLY].Text);
       }
 
     private void GridView_attachments_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
@@ -219,12 +258,13 @@ namespace UserControl_attachment_explorer
         tablecell_spacer = new TableCell();
         tablecell_spacer.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         e.Row.Cells.AddAt(UserControl_attachment_explorer_Static.TCI_DELETE_INITIALLY, tablecell_spacer);
+        e.Row.Cells[UserControl_attachment_explorer_Static.TCI_DELETE_SUBSEQUENTLY].Visible = p.be_ok_to_delete;
         }
       }
 
     private void GridView_attachments_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
       {
-      var fullspec = ((string[])(GridView_attachments.DataSource))[e.RowIndex];
+      var fullspec = p.directory_file_string_array[e.RowIndex];
       var basespec = System.IO.Path.GetFileName(fullspec);
       System.IO.File.Delete(fullspec);
       if (OnDelete != null)
@@ -234,7 +274,7 @@ namespace UserControl_attachment_explorer
       Bind();
       }
 
-    protected void Button_save_Click(object sender, System.EventArgs e)
+    protected void Button_upload_Click(object sender, System.EventArgs e)
       {
       //
       // For this to work, the ASP.NET Machine Account (ASPNET) must have write permission for the folder specified by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder
@@ -242,6 +282,10 @@ namespace UserControl_attachment_explorer
       //
       if (FileUpload_control.HasFile)
         {
+        if (!System.IO.Directory.Exists(p.path))
+          {
+          System.IO.Directory.CreateDirectory(p.path);
+          }
         var basename = System.IO.Path.GetFileName(FileUpload_control.FileName);
         FileUpload_control.SaveAs(p.path + "\\" + basename);
         if (OnSave != null)
@@ -250,6 +294,11 @@ namespace UserControl_attachment_explorer
           }
         Bind();
         }
+      }
+
+    protected void GridView_attachments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+      {
+      FileDownload(Page, p.directory_file_string_array[e.NewSelectedIndex]);
       }
 
     } // end TWebUserControl_attachment_explorer
