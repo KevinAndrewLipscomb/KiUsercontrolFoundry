@@ -15,6 +15,9 @@ namespace UserControl_attachment_explorer
     public const int TCI_ITEM_SUBSEQUENTLY = TCI_ITEM_INITIALLY + 1;
     }
 
+  public delegate void on_delete_type(string basename);
+  public delegate void on_save_type(string basename);
+
   public struct p_type
     {
     public bool be_empty;
@@ -23,6 +26,8 @@ namespace UserControl_attachment_explorer
     public bool be_ok_to_add;
     public bool be_ok_to_delete;
     public string[] directory_file_string_array;
+    public on_delete_type OnDelete;
+    public on_save_type OnSave;
     public string path;
     }
 
@@ -87,10 +92,20 @@ namespace UserControl_attachment_explorer
         }
       }
     private p_type p;
-    public delegate void on_delete_type(string basename);
-    public on_delete_type OnDelete;
-    public delegate void on_save_type(string basename);
-    public on_save_type OnSave;
+    public on_delete_type OnDelete
+      {
+      set
+        {
+        p.OnDelete = value;
+        }
+      }
+    public on_save_type OnSave
+      {
+      set
+        {
+        p.OnSave = value;
+        }
+      }
     private void InjectPersistentClientSideScript()
       {
       // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
@@ -267,9 +282,9 @@ namespace UserControl_attachment_explorer
       var fullspec = p.directory_file_string_array[e.RowIndex];
       var basespec = System.IO.Path.GetFileName(fullspec);
       System.IO.File.Delete(fullspec);
-      if (OnDelete != null)
+      if (p.OnDelete != null)
         {
-        OnDelete(basespec);
+        p.OnDelete(basespec);
         }
       Bind();
       }
@@ -288,9 +303,9 @@ namespace UserControl_attachment_explorer
           }
         var basename = System.IO.Path.GetFileName(FileUpload_control.FileName);
         FileUpload_control.SaveAs(p.path + "\\" + basename);
-        if (OnSave != null)
+        if (p.OnSave != null)
           {
-          OnSave(basename);
+          p.OnSave(basename);
           }
         Bind();
         }
