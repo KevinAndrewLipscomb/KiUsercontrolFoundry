@@ -8,8 +8,13 @@
         </tr>
         <tr>
           <td>
-            <p>This can be caused by inactivity, or by configuration changes on the host server.</p>
-            <p>As a security precaution, you have been logged out.</p>
+            <p>This can be caused by:</p>
+              <ul>
+                <li><p>Using your browser's <em>Back</em> button (<u>please only use controls provided by the web server</u>);</p></li>
+                <li><p>Configuration changes on the host server;</p></li>
+                <li><p>Inactivity;</p></li>
+              </ul>
+            <p>As a security and integrity precaution, you have been logged out.</p>
             <p>Please <ASP:HyperLink id="HyperLink_login" runat="server" font-bold="True" navigateurl="~/login.aspx">log in</ASP:HyperLink> again to continue using the application.</p>
           </td>
         </tr>
