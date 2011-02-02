@@ -19,8 +19,8 @@
   <li>Llamagraphics Life Balance</li>
   <li>Microsoft Windows</li>
   <li>Natara Bonsai</li>
-  <li>Palm webOS platform including MotionApps Classic PalmOS emulator</li>
+  <li>Palm webOS platform</li>
   <li>PDFCreator</li>
   <li>PGP</li>
-  <li>Windows Live Sync</li>
+  <li>Windows Live Mesh</li>
   <li>Xemacs</li></ul>
