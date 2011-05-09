@@ -15,12 +15,13 @@
   <li>LyX document processor</li></ul>
 <p>Ancillary tools:</p>
 <ul>
-  <li>IBackup IDrive</li>
+  <li>Cygwin</li>
   <li>Llamagraphics Life Balance</li>
   <li>Microsoft Windows</li>
   <li>Natara Bonsai</li>
-  <li>Palm webOS platform</li>
   <li>PDFCreator</li>
   <li>PGP</li>
+  <li>Rsync.net</li>
   <li>Windows Live Mesh</li>
-  <li>Xemacs</li></ul>
+  <li>Xemacs</li>
+</ul>
