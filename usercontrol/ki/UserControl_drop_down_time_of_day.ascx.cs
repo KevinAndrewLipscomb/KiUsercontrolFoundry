@@ -123,9 +123,9 @@ namespace UserControl_drop_down_time_of_day
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if ((Session[this.UniqueID + ".p"] != null))
+      if ((Session[InstanceId() + ".p"] != null))
         {
-        p = (p_type)(Session[this.UniqueID + ".p"]);
+        p = (p_type)(Session[InstanceId() + ".p"]);
         }
       else
         {
@@ -137,8 +137,8 @@ namespace UserControl_drop_down_time_of_day
 
     private void TWebUserControl_drop_down_time_of_day_PreRender(object sender, System.EventArgs e)
       {
-      Session.Remove(this.UniqueID + ".p");
-      Session.Add(this.UniqueID + ".p", p);
+      Session.Remove(InstanceId() + ".p");
+      Session.Add(InstanceId() + ".p", p);
       }
 
     // / <summary>
@@ -152,7 +152,7 @@ namespace UserControl_drop_down_time_of_day
 
     public TWebUserControl_drop_down_time_of_day Fresh()
       {
-      Session.Remove(this.ID + ".p");
+      Session.Remove(InstanceId() + ".p");
       return this;
       }
 

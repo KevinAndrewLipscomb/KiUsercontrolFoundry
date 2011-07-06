@@ -58,10 +58,10 @@ namespace UserControl_bread_crumb_trail
 
 
 
-            if (IsPostBack && (Session["UserControl_bread_crumb_trail.p"] != null) && (Session["UserControl_bread_crumb_trail.p"].GetType().Namespace == p.GetType().Namespace))
+            if (IsPostBack && (Session[InstanceId() + ".p"] != null))
             {
 
-                p = (p_type)(Session["UserControl_bread_crumb_trail.p"]);
+                p = (p_type)(Session[InstanceId() + ".p"]);
             }
             else
             {
@@ -87,7 +87,7 @@ namespace UserControl_bread_crumb_trail
         private void TWebUserControl_bread_crumb_trail_PreRender(object sender, System.EventArgs e)
         {
 
-            SessionSet("UserControl_bread_crumb_trail.p", p);
+            SessionSet(InstanceId() + ".p", p);
         }
 
         public TWebUserControl_bread_crumb_trail Fresh()
@@ -95,7 +95,7 @@ namespace UserControl_bread_crumb_trail
             TWebUserControl_bread_crumb_trail result;
 
 
-            Session.Remove("UserControl_bread_crumb_trail.p");
+            Session.Remove(InstanceId() + ".p");
             result = this;
             return result;
         }

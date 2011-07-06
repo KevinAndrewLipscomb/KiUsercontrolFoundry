@@ -217,11 +217,11 @@ namespace UserControl_drop_down_date
             base.OnInit(e);
 
 
-            if ((Session[this.UniqueID + ".p"] != null))
+            if ((Session[InstanceId() + ".p"] != null))
             {
 
 
-                p = (p_type)(Session[this.UniqueID + ".p"]);
+                p = (p_type)(Session[InstanceId() + ".p"]);
             }
             else
             {
@@ -243,11 +243,11 @@ namespace UserControl_drop_down_date
 
 
 
-            Session.Remove(this.UniqueID + ".p");
+            Session.Remove(InstanceId() + ".p");
 
 
 
-            Session.Add(this.UniqueID + ".p", p);
+            Session.Add(InstanceId() + ".p", p);
         }
 
         // / <summary>
@@ -290,7 +290,7 @@ namespace UserControl_drop_down_date
 
 
 
-            Session.Remove(this.ID + ".p");
+            Session.Remove(InstanceId() + ".p");
             result = this;
             return result;
         }

@@ -126,9 +126,9 @@ namespace UserControl_drop_down_datetime
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (Session["UserControl_drop_down_datetime.p"] != null)
+      if (Session[InstanceId() + ".p"] != null)
         {
-        p = (p_type)(Session["UserControl_drop_down_datetime.p"]);
+        p = (p_type)(Session[InstanceId() + ".p"]);
         p.be_loaded = IsPostBack && ((Session["UserControl_member_binder_PlaceHolder_content"] as string) == "UserControl_drop_down_datetime");
         }
       else
@@ -149,14 +149,14 @@ namespace UserControl_drop_down_datetime
 
     private void TWebUserControl_drop_down_datetime_PreRender(object sender, System.EventArgs e)
       {
-      SessionSet("UserControl_drop_down_datetime.p", p);
+      SessionSet(InstanceId() + ".p", p);
       }
 
     public TWebUserControl_drop_down_datetime Fresh()
       {
       UserControl_drop_down_date_control.Fresh();
       UserControl_drop_down_time_of_day_control.Fresh();
-      Session.Remove("UserControl_drop_down_datetime.p");
+      Session.Remove(InstanceId() + ".p");
       return this;
       }
 
