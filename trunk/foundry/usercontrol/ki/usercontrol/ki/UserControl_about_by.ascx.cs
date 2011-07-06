@@ -112,10 +112,10 @@ namespace UserControl_about_by
             InitializeComponent();
             base.OnInit(e);
 
-            if (Session["UserControl_about_by.p"] != null)
+            if (Session[InstanceId() + ".p"] != null)
             {
 
-                p = (p_type)(Session["UserControl_about_by.p"]);
+                p = (p_type)(Session[InstanceId() + ".p"]);
 
 
                 p.be_loaded = IsPostBack && ((Session["M_PlaceHolder_content"] as string) == "UserControl_about_by");
@@ -142,7 +142,7 @@ namespace UserControl_about_by
         private void TWebUserControl_about_by_PreRender(object sender, System.EventArgs e)
         {
 
-            SessionSet("UserControl_about_by.p", p);
+            SessionSet(InstanceId() + ".p", p);
         }
 
         public TWebUserControl_about_by Fresh()
@@ -150,7 +150,7 @@ namespace UserControl_about_by
             TWebUserControl_about_by result;
 
 
-            Session.Remove("UserControl_about_by.p");
+            Session.Remove(InstanceId() + ".p");
             result = this;
             return result;
         }

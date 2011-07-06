@@ -43,7 +43,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.be_ok_to_add = value;
-        SessionSet(ClientID + ".p", p);
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     public bool be_ok_to_delete
@@ -55,7 +55,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.be_ok_to_delete = value;
-        SessionSet(ClientID + ".p", p);
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     public bool be_empty
@@ -76,7 +76,7 @@ namespace UserControl_attachment_explorer
         FileUpload_control.Enabled = value;
         GridView_attachments.Enabled = value;
         p.be_enabled = value;
-        SessionSet(ClientID + ".p", p);
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     public string path
@@ -88,7 +88,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.path = value;
-        SessionSet(ClientID + ".p", p);
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     private p_type p;
@@ -202,9 +202,9 @@ namespace UserControl_attachment_explorer
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (IsPostBack && (Session[ClientID + ".p"] != null) && (Session[ClientID + ".p"].GetType().Namespace == p.GetType().Namespace))
+      if (IsPostBack && (Session[InstanceId() + ".p"] != null))
         {
-        p = (p_type)(Session[ClientID + ".p"]);
+        p = (p_type)(Session[InstanceId() + ".p"]);
         }
       else
         {
@@ -232,12 +232,12 @@ namespace UserControl_attachment_explorer
 
     private void TWebUserControl_attachment_explorer_PreRender(object sender, System.EventArgs e)
       {
-      SessionSet(ClientID + ".p", p);
+      SessionSet(InstanceId() + ".p", p);
       }
 
     public TWebUserControl_attachment_explorer Fresh()
       {
-      Session.Remove("UserControl_attachment_explorer.p");
+      Session.Remove(InstanceId() + ".p");
       return this;
       }
 

@@ -37,10 +37,10 @@ namespace UserControl_config_welcome
 
 
 
-            if (IsPostBack && (Session["UserControl_config_welcome.p"] != null) && (Session["UserControl_config_welcome.p"].GetType().Namespace == p.GetType().Namespace))
+            if (IsPostBack && (Session[InstanceId() + ".p"] != null))
             {
 
-                p = (p_type)(Session["UserControl_config_welcome.p"]);
+                p = (p_type)(Session[InstanceId() + ".p"]);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace UserControl_config_welcome
         private void TWebUserControl_config_welcome_PreRender(object sender, System.EventArgs e)
         {
 
-            SessionSet("UserControl_config_welcome.p", p);
+            SessionSet(InstanceId() + ".p", p);
         }
 
         public TWebUserControl_config_welcome Fresh()
@@ -72,7 +72,7 @@ namespace UserControl_config_welcome
             TWebUserControl_config_welcome result;
 
 
-            Session.Remove("UserControl_config_welcome.p");
+            Session.Remove(InstanceId() + ".p");
             result = this;
             return result;
         }
