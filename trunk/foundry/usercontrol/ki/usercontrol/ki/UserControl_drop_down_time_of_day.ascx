@@ -3,7 +3,7 @@
   <ContentTemplate>
     <table cellspacing="0" cellpadding="0" border="0">
       <tr>
-        <td nowrap="true">
+        <td nowrap="nowrap">
           <ASP:DropDownList id="DropDownList_hour" runat="server"></ASP:DropDownList>:<ASP:DropDownList id="DropDownList_minute" runat="server"></ASP:DropDownList>
           <ASP:Button id="Button_now" runat="server" text="Now" causesvalidation="False" onclick="Button_now_Click"></ASP:Button>
         </td>
