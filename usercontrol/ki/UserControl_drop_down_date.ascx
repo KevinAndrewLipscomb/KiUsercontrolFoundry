@@ -4,7 +4,7 @@
   <ContentTemplate>
     <table cellspacing="0" cellpadding="0" border="0">
       <tr>
-        <td nowrap="true" valign="middle">
+        <td nowrap="nowrap" valign="middle">
           <ASP:DropDownList id="DropDownList_month" runat="server"></ASP:DropDownList>
           <ASP:DropDownList id="DropDownList_day" runat="server"></ASP:DropDownList>
           <ASP:DropDownList id="DropDownList_year" runat="server"></ASP:DropDownList>
