@@ -43,6 +43,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.be_ok_to_add = value;
+        Panel_new.Visible = p.be_ok_to_add;
         SessionSet(InstanceId() + ".p", p);
         }
       }
@@ -55,6 +56,7 @@ namespace UserControl_attachment_explorer
       set
         {
         p.be_ok_to_delete = value;
+        Bind();
         SessionSet(InstanceId() + ".p", p);
         }
       }
@@ -93,17 +95,25 @@ namespace UserControl_attachment_explorer
       }
     private p_type p;
     public on_delete_type OnDelete
+      //
+      // Must be set to point to the target routine each and every time the target routine is reinstantiated
+      //
       {
       set
         {
         p.OnDelete = value;
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     public on_save_type OnSave
+      //
+      // Must be set to point to the target routine each and every time the target routine is reinstantiated
+      //
       {
       set
         {
         p.OnSave = value;
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     private void InjectPersistentClientSideScript()
@@ -292,8 +302,8 @@ namespace UserControl_attachment_explorer
     protected void Button_upload_Click(object sender, System.EventArgs e)
       {
       //
-      // For this to work, the ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] must have write permission for the folder specified by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder
-      // Options... / View, and in the Advanced Settings, clear the "Use simple file sharing" checkbox.
+      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified by p.path.  Configure this on the
+      // Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use simple file sharing" checkbox.
       //
       if (FileUpload_control.HasFile)
         {

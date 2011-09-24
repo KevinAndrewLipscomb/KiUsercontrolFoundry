@@ -13,7 +13,7 @@
   <tr>
     <td>
       <asp:Panel ID="Panel_new" runat="server">
-        &nbsp;<img id="Image_paperclip" height="16" alt="New attachment" hspace="0" src="~/usercontrol/ki/image/paperclip_16x16.gif" width="16" border="0" runat="server">
+        &nbsp;<img id="Image_paperclip" height="16" alt="New attachment" hspace="0" src="~/usercontrol/ki/image/paperclip_16x16.gif" width="16" border="0" runat="server"/>
         <asp:FileUpload id="FileUpload_control" runat="server"></asp:FileUpload>
         &nbsp;
         <asp:Button ID="Button_upload" runat="server" Text="<==&nbsp;Upload" onclick="Button_upload_Click" CausesValidation="False" />
