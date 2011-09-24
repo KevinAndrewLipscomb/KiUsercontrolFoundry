@@ -96,7 +96,8 @@ namespace UserControl_attachment_explorer
     private p_type p;
     public on_delete_type OnDelete
       //
-      // Must be set to point to the target routine each and every time the target routine is reinstantiated
+      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object that may not have been garbage
+      // collected.
       //
       {
       set
@@ -107,7 +108,8 @@ namespace UserControl_attachment_explorer
       }
     public on_save_type OnSave
       //
-      // Must be set to point to the target routine each and every time the target routine is reinstantiated
+      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object that may not have been garbage
+      // collected.
       //
       {
       set
