@@ -23,6 +23,6 @@
   <li>PDFCreator</li>
   <li>PGP</li>
   <li>Rsync.net</li>
-  <li>Windows Live Mesh</li>
+  <li>Microsoft SkyDrive</li>
   <li>Xemacs</li>
 </ul>
