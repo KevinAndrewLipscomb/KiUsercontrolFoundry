@@ -215,13 +215,10 @@ namespace UserControl_drop_down_date
             // Required for Designer support
             InitializeComponent();
             base.OnInit(e);
-
-
-            if ((Session[InstanceId() + ".p"] != null))
+            var instance_id = InstanceId();
+            if (IsPostBack && (Session[instance_id + ".p"] != null))
             {
-
-
-                p = (p_type)(Session[InstanceId() + ".p"]);
+                p = (p_type)(Session[instance_id + ".p"]);
             }
             else
             {

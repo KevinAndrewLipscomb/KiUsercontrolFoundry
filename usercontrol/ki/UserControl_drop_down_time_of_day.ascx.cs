@@ -123,7 +123,7 @@ namespace UserControl_drop_down_time_of_day
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if ((Session[InstanceId() + ".p"] != null))
+      if (IsPostBack && (Session[InstanceId() + ".p"] != null))
         {
         p = (p_type)(Session[InstanceId() + ".p"]);
         }
