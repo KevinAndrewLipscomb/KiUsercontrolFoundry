@@ -206,6 +206,11 @@ namespace UserControl_drop_down_date
                 {
                     SetChildSelectedValues();
                 }
+                //
+                // Only make the Today button visible if it falls within the range of valid choices.
+                //
+                var today_spec = DateTime.Today.ToString("yyyy-MM-dd");
+                Button_today.Visible = ((p.min_year + "-01-01").CompareTo(today_spec) < 1) && (today_spec.CompareTo(p.max_year + "-12-31") < 1);
             }
 
         }
