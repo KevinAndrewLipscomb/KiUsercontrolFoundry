@@ -304,8 +304,9 @@ namespace UserControl_attachment_explorer
     protected void Button_upload_Click(object sender, System.EventArgs e)
       {
       //
-      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified by p.path.  Configure this on the
-      // Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use simple file sharing" checkbox.
+      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified by
+      // p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use simple file
+      // sharing" checkbox.
       //
       if (FileUpload_control.HasFile)
         {

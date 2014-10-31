@@ -23,6 +23,6 @@
   <li>PDFCreator</li>
   <li>PGP</li>
   <li>Rsync.net</li>
-  <li>Microsoft SkyDrive</li>
+  <li>Microsoft OneDrive</li>
   <li>Xemacs</li>
 </ul>
