@@ -17,8 +17,8 @@
 <p>Ancillary tools:</p>
 <ul>
   <li>Cygwin</li>
-  <li>Llamagraphics Life Balance</li>
   <li>Microsoft Windows</li>
+  <li>MyLifeOrganized</li>
   <li>Natara Bonsai</li>
   <li>PDFCreator</li>
   <li>PGP</li>
