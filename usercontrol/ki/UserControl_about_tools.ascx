@@ -10,7 +10,7 @@
   <li>Divlocsoft Actual Search &amp; Replace</li>
   <li>GnuWin32 findutils and sed packages</li>
   <li>Open Icon Library</li>
-  <li>Michael Elsdoerfer's NTFS Link</li>
+  <li>Hermann Schinagl's Link Shell Extension</li>
   <li>WinMerge</li>
   <li>SourceForge.net open source code repository</li>
   <li>LyX document processor</li></ul>
@@ -24,5 +24,5 @@
   <li>PGP</li>
   <li>Rsync.net</li>
   <li>Microsoft OneDrive</li>
-  <li>Xemacs</li>
+  <li>GNU Emacs</li>
 </ul>
