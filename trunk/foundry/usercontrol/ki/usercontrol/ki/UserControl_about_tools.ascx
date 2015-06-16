@@ -1,7 +1,7 @@
 <%@ Control Language="c#" AutoEventWireup="True" Codebehind="UserControl_about_tools.ascx.cs" Inherits="UserControl_about_tools.TWebUserControl_about_tools"%>
 <p>Built and controlled using:</p>
 <ul>
-  <li>Microsoft Visual Web Developer Express (C# programming language)</li>
+  <li>Microsoft Visual Studio (C# programming language)</li>
   <li>Microsoft ASP.NET web application framework</li>
   <li>ASP.NET AJAX Control Toolkit</li>
   <li>MySQL database management system</li>
