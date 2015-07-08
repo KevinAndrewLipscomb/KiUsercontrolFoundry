@@ -18,9 +18,22 @@ namespace UserControl_drop_down_date
       } // end UserControl_drop_down_date
 
     // Class type
-    // [ParseChildren(ChildrenAsProperties = true)]
+    [ParseChildren(ChildrenAsProperties = true)]
     public partial class TWebUserControl_drop_down_date: ki_web_ui.usercontrol_class
     {
+        public bool be_clearable
+          {
+          get
+            {
+            return p.be_clearable;
+            }
+          set
+            {
+            Button_clear.Visible = value;
+            p.be_clearable = value;
+            }
+          }
+
         public bool enabled
         {
           get {
@@ -153,6 +166,7 @@ namespace UserControl_drop_down_date
             SetChildSelectedValues();
           }
         }
+
         private p_type p;
         public void Clear()
         {
@@ -227,6 +241,7 @@ namespace UserControl_drop_down_date
             }
             else
             {
+                p.be_clearable = false;
                 p.be_enabled = true;
 
 
@@ -299,6 +314,7 @@ namespace UserControl_drop_down_date
 
         private struct p_type
         {
+            public bool be_clearable;
             public bool be_enabled;
             public uint min_year;
             public uint max_year;
@@ -310,6 +326,11 @@ namespace UserControl_drop_down_date
       args.IsValid = (selectedvalue == UserControl_drop_down_date_Static.NONE) || isvalid;
       }
 
+    protected void Button_clear_Click(object sender, EventArgs e)
+      {
+      p.selected_value = UserControl_drop_down_date_Static.NONE;
+      SetChildSelectedValues();
+      }
     } // end TWebUserControl_drop_down_date
 
 }
