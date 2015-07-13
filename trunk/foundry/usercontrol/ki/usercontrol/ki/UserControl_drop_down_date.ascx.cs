@@ -1,6 +1,5 @@
 using kix;
 using System;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_drop_down_date
@@ -104,6 +103,11 @@ namespace UserControl_drop_down_date
         }
       else
         {
+        p.be_clearable = false;
+        p.be_enabled = true;
+        p.min_year = (uint)(DateTime.Today.Year - 1);
+        p.max_year = (uint)(DateTime.Today.Year + 1);
+        p.selected_value = UserControl_drop_down_date_Static.NONE;
         }
       }
 
@@ -141,7 +145,7 @@ namespace UserControl_drop_down_date
           DropDownList_day.Items.Insert(0, new ListItem("",""));
           DropDownList_year.Items.Insert(0, new ListItem("",""));
           }
-        else
+        if (p.selected_value != UserControl_drop_down_date_Static.NONE)
           {
           SetChildSelectedValues();
           }
@@ -155,11 +159,15 @@ namespace UserControl_drop_down_date
 
     //--
     //
-    // PUBLIC
+    // INTERNAL
     //
     //--
 
-    public bool be_clearable
+    //
+    // Note that these properties are deliberately 'internal'.
+    //
+
+    internal bool be_clearable
       {
       get
         {
@@ -172,7 +180,7 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public bool enabled
+    internal bool enabled
       {
       get
         {
@@ -188,7 +196,7 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public bool isvalid
+    internal bool isvalid
       {
       get
         {
@@ -211,7 +219,7 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public string maxyear
+    internal string maxyear
       {
       get
         {
@@ -223,7 +231,7 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public string minyear
+    internal string minyear
       {
       get
         {
@@ -235,7 +243,7 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public DateTime selectedvalue
+    internal DateTime selectedvalue
       {
       get
         {
@@ -285,17 +293,11 @@ namespace UserControl_drop_down_date
         }
       }
 
-    public TWebUserControl_drop_down_date() : base()
-      {
-      //
-      // Public properties can be set so early in the page lifecycle that their default backing values should be set here, in the constructor.
-      //
-      p.be_clearable = false;
-      p.be_enabled = true;
-      p.min_year = (uint)(DateTime.Today.Year - 1);
-      p.max_year = (uint)(DateTime.Today.Year + 1);
-      p.selected_value = UserControl_drop_down_date_Static.NONE;
-      }
+    //--
+    //
+    // PUBLIC
+    //
+    //-
 
     public void Clear()
       {
