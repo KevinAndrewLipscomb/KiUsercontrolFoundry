@@ -1,6 +1,5 @@
 using kix;
 using System;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace UserControl_drop_down_time_of_day
@@ -95,6 +94,10 @@ namespace UserControl_drop_down_time_of_day
         }
       else
         {
+        p.be_clearable = false;
+        p.be_enabled = true;
+        p.minute_intervals = new k.subtype<int>(1,60);
+        p.selected_value = k.EMPTY;
         }
       }
 
@@ -116,25 +119,29 @@ namespace UserControl_drop_down_time_of_day
           representation = minute.val.ToString("D2");
           DropDownList_minute.Items.Add(new ListItem(representation,representation));
           }
-        if (p.selected_value == k.EMPTY)
+        if ((p.selected_value == k.EMPTY) || p.be_clearable)
           {
           DropDownList_hour.Items.Insert(0, new ListItem("",""));
           DropDownList_minute.Items.Insert(0, new ListItem("",""));
           }
-        else
+        if (p.selected_value != k.EMPTY)
           {
-          selectedvalue = p.selected_value;
+          SetChildSelectedValues();
           }
         }
       }
 
     //-
     //
-    // PUBLIC
+    // INTERNAL
     //
     //-
 
-    public bool be_clearable
+    //
+    // Note that these properties are deliberately 'internal'.
+    //
+
+    internal bool be_clearable
       {
       get
         {
@@ -147,7 +154,7 @@ namespace UserControl_drop_down_time_of_day
         }
       }
 
-    public bool enabled
+    internal bool enabled
       {
       get
         {
@@ -162,7 +169,7 @@ namespace UserControl_drop_down_time_of_day
         }
       }
 
-    public int minute_intervals
+    internal int minute_intervals
       {
       get
         {
@@ -174,7 +181,7 @@ namespace UserControl_drop_down_time_of_day
         }
       }
 
-    public string selectedvalue
+    internal string selectedvalue
       {
       get
         {
@@ -196,16 +203,11 @@ namespace UserControl_drop_down_time_of_day
         }          
       }
 
-    public TWebUserControl_drop_down_time_of_day() : base()
-      {
-      //
-      // Public properties can be set so early in the page lifecycle that their default backing values should be set here, in the constructor.
-      //
-      p.be_clearable = false;
-      p.be_enabled = true;
-      p.minute_intervals = new k.subtype<int>(1,60);
-      p.selected_value = k.EMPTY;
-      }
+    //-
+    //
+    // PUBLIC
+    //
+    //-
 
     public void Clear()
       {
