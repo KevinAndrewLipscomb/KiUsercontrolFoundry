@@ -1,13 +1,11 @@
 using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using System.Collections;
 using System.IO;
+using System.Web.UI.WebControls;
+
 namespace UserControl_bread_crumb_trail
-{
-    public struct p_type
+  {
+  public struct p_type
     {
         public bool be_loaded;
     } // end p_type
@@ -120,7 +118,13 @@ namespace UserControl_bread_crumb_trail
               {
               ((Session["waypoint_stack"]) as Stack).Pop();
               }
-            Server.Transfer(((e.CommandSource) as LinkButton).Text + ".aspx");
+            var target = ((e.CommandSource) as LinkButton).Text + ".aspx";
+            if (!File.Exists(path:Server.MapPath(".") + "/" + target))
+              {
+              (Session["waypoint_stack"] as Stack).Clear();
+              Server.Transfer("~/Default.aspx");
+              }
+            Server.Transfer(target);
             }
           }
 
