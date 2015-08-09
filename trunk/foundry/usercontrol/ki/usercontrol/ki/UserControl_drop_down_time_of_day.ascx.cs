@@ -165,6 +165,7 @@ namespace UserControl_drop_down_time_of_day
         DropDownList_hour.Enabled = value;
         DropDownList_minute.Enabled = value;
         Button_now.Enabled = value;
+        Button_clear.Enabled = value;
         p.be_enabled = value;
         }
       }
