@@ -192,6 +192,7 @@ namespace UserControl_drop_down_date
         DropDownList_day.Enabled = value;
         DropDownList_year.Enabled = value;
         Button_today.Enabled = value;
+        Button_clear.Enabled = value;
         p.be_enabled = value;
         }
       }
