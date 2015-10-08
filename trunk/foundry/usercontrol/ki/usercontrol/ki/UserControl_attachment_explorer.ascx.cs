@@ -255,7 +255,7 @@ namespace UserControl_attachment_explorer
 
     public void Bind(string path)
       {
-      if (path != k.EMPTY)
+      if (path.Length > 0)
         {
         p.path = path;
         }
