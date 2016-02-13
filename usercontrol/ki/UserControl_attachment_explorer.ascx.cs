@@ -1,123 +1,86 @@
 using kix;
 using System.IO;
-using System.Web;
 using System.Web.UI.WebControls;
-using System.Web.UI;
 
 namespace UserControl_attachment_explorer
   {
-  public static class UserControl_attachment_explorer_Static
-    {
-    public const int TCI_LINKBUTTON = 0;
-    public const int TCI_DELETE_INITIALLY = 1;
-    public const int TCI_ITEM_INITIALLY = 2;
-    public const int TCI_DELETE_SUBSEQUENTLY = TCI_DELETE_INITIALLY + 1;
-    public const int TCI_ITEM_SUBSEQUENTLY = TCI_ITEM_INITIALLY + 1;
-    }
 
   public delegate void on_delete_type(string basename);
   public delegate void on_save_type(string basename);
 
-  public struct p_type
-    {
-    public bool be_empty;
-    public bool be_enabled;
-    public bool be_loaded;
-    public bool be_ok_to_add;
-    public bool be_ok_to_delete;
-    public string[] directory_file_string_array;
-    public on_delete_type OnDelete;
-    public on_save_type OnSave;
-    public string path;
-    }
-
   // [ParseChildren(ChildrenAsProperties = true)]
   public partial class TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class
     {
-    public bool be_ok_to_add
+
+    //--
+    //
+    // PRIVATE
+    //
+    //--
+
+    private static class Static
       {
-      get
-        {
-        return p.be_ok_to_add;
-        }
-      set
-        {
-        p.be_ok_to_add = value;
-        Panel_new.Visible = p.be_ok_to_add;
-        SessionSet(InstanceId() + ".p", p);
-        }
+      public const int TCI_LINKBUTTON = 0;
+      public const int TCI_DELETE_INITIALLY = 1;
+      public const int TCI_ITEM_INITIALLY = 2;
+      public const int TCI_DELETE_SUBSEQUENTLY = TCI_DELETE_INITIALLY + 1;
+      public const int TCI_ITEM_SUBSEQUENTLY = TCI_ITEM_INITIALLY + 1;
       }
-    public bool be_ok_to_delete
+
+    private struct p_type
       {
-      get
-        {
-        return p.be_ok_to_delete;
-        }
-      set
-        {
-        p.be_ok_to_delete = value;
-        Bind();
-        SessionSet(InstanceId() + ".p", p);
-        }
+      public bool be_empty;
+      public bool be_enabled;
+      public bool be_loaded;
+      public bool be_ok_to_add;
+      public bool be_ok_to_delete;
+      public string[] directory_file_string_array;
+      public on_delete_type OnDelete;
+      public on_save_type OnSave;
+      public string path;
       }
-    public bool be_empty
-      {
-      get
-        {
-        return p.be_empty;
-        }
-      }
-    public bool enabled
-      {
-      get
-        {
-        return p.be_enabled;
-        }
-      set
-        {
-        FileUpload_control.Enabled = value;
-        GridView_attachments.Enabled = value;
-        p.be_enabled = value;
-        SessionSet(InstanceId() + ".p", p);
-        }
-      }
-    public string path
-      {
-      get
-        {
-        return p.path;
-        }
-      set
-        {
-        p.path = value;
-        SessionSet(InstanceId() + ".p", p);
-        }
-      }
+
     private p_type p;
-    public on_delete_type OnDelete
-      //
-      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object that may not have been garbage
-      // collected.
-      //
+
+    private void GridView_attachments_RowDataBound(object sender, GridViewRowEventArgs e)
       {
-      set
+      TableCell tablecell_spacer;
+      if (e.Row.RowType == DataControlRowType.DataRow)
         {
-        p.OnDelete = value;
-        SessionSet(InstanceId() + ".p", p);
+        ((e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text)
+        + System.IO.Path.GetFileName(e.Row.Cells[Static.TCI_ITEM_INITIALLY].Text);
+        ((e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text);
+        e.Row.Cells[Static.TCI_ITEM_INITIALLY].Visible = false;
+        tablecell_spacer = new TableCell();
+        tablecell_spacer.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        e.Row.Cells.AddAt(Static.TCI_DELETE_INITIALLY, tablecell_spacer);
+        e.Row.Cells[Static.TCI_DELETE_SUBSEQUENTLY].Visible = p.be_ok_to_delete;
         }
       }
-    public on_save_type OnSave
-      //
-      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object that may not have been garbage
-      // collected.
-      //
+
+    private void GridView_attachments_RowDeleting(object sender, GridViewDeleteEventArgs e)
       {
-      set
+      var fullspec = p.directory_file_string_array[e.RowIndex];
+      var basespec = System.IO.Path.GetFileName(fullspec);
+      System.IO.File.Delete(fullspec);
+      if (p.OnDelete != null)
         {
-        p.OnSave = value;
-        SessionSet(InstanceId() + ".p", p);
+        p.OnDelete(basespec);
         }
+      Bind();
       }
+
+    // / <summary>
+    // / Required method for Designer support -- do not modify
+    // / the contents of this method with the code editor.
+    // / </summary>
+    private void InitializeComponent()
+      {
+      GridView_attachments.RowDataBound += new GridViewRowEventHandler(GridView_attachments_RowDataBound);
+      GridView_attachments.RowDeleting += new GridViewDeleteEventHandler(GridView_attachments_RowDeleting);
+      PreRender += TWebUserControl_attachment_explorer_PreRender;
+      }
+
     private void InjectPersistentClientSideScript()
       {
       // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);
@@ -197,16 +160,43 @@ namespace UserControl_attachment_explorer
       // );
       }
 
-    protected void Page_Load(object sender, System.EventArgs e)
+    private void TWebUserControl_attachment_explorer_PreRender(object sender, System.EventArgs e)
       {
-      if (!p.be_loaded)
+      SessionSet(InstanceId() + ".p", p);
+      }
+
+    //--
+    //
+    // PROTECTED
+    //
+    //--
+
+    protected void Button_upload_Click(object sender, System.EventArgs e)
+      {
+      //
+      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified
+      // by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use
+      // simple file sharing" checkbox.
+      //
+      if (FileUpload_control.HasFile)
         {
-        Image_paperclip.Src = k.ExpandTildePath(Image_paperclip.Src);
-        p.be_loaded = true;
+        if (!Directory.Exists(p.path))
+          {
+          Directory.CreateDirectory(p.path);
+          }
+        var basename = Path.GetFileName(FileUpload_control.FileName);
+        FileUpload_control.SaveAs(p.path + "\\" + basename);
+        if (p.OnSave != null)
+          {
+          p.OnSave(basename);
+          }
+        Bind();
         }
-      Bind();
-      Panel_new.Visible = p.be_ok_to_add;
-      InjectPersistentClientSideScript();
+      }
+
+    protected void GridView_attachments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+      {
+      FileDownload(Page, p.directory_file_string_array[e.NewSelectedIndex]);
       }
 
     protected override void OnInit(System.EventArgs e)
@@ -230,30 +220,109 @@ namespace UserControl_attachment_explorer
         }
       }
 
-    // / <summary>
-    // / Required method for Designer support -- do not modify
-    // / the contents of this method with the code editor.
-    // / </summary>
-    private void InitializeComponent()
+    protected void Page_Load(object sender, System.EventArgs e)
       {
-      GridView_attachments.RowDataBound += new System.Web.UI.WebControls.GridViewRowEventHandler(this.GridView_attachments_RowDataBound);
-      GridView_attachments.RowDeleting += new System.Web.UI.WebControls.GridViewDeleteEventHandler(this.GridView_attachments_RowDeleting);
-      PreRender += this.TWebUserControl_attachment_explorer_PreRender;
-      //this.Load += this.Page_Load;
+      if (!p.be_loaded)
+        {
+        Image_paperclip.Src = k.ExpandTildePath(Image_paperclip.Src);
+        p.be_loaded = true;
+        }
+      Bind();
+      Panel_new.Visible = p.be_ok_to_add;
+      InjectPersistentClientSideScript();
       }
 
-    private void TWebUserControl_attachment_explorer_PreRender(object sender, System.EventArgs e)
+    //--
+    //
+    // PUBLIC
+    //
+    //--
+
+    public bool be_empty
       {
-      SessionSet(InstanceId() + ".p", p);
+      get
+        {
+        return p.be_empty;
+        }
+      }
+    public bool be_ok_to_add
+      {
+      get
+        {
+        return p.be_ok_to_add;
+        }
+      set
+        {
+        p.be_ok_to_add = value;
+        Panel_new.Visible = p.be_ok_to_add;
+        SessionSet(InstanceId() + ".p", p);
+        }
+      }
+    public bool be_ok_to_delete
+      {
+      get
+        {
+        return p.be_ok_to_delete;
+        }
+      set
+        {
+        p.be_ok_to_delete = value;
+        Bind();
+        SessionSet(InstanceId() + ".p", p);
+        }
+      }
+    public bool enabled
+      {
+      get
+        {
+        return p.be_enabled;
+        }
+      set
+        {
+        FileUpload_control.Enabled = value;
+        GridView_attachments.Enabled = value;
+        p.be_enabled = value;
+        SessionSet(InstanceId() + ".p", p);
+        }
+      }
+    public on_delete_type OnDelete
+      //
+      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object
+      // that may not have been garbage collected.
+      //
+      {
+      set
+        {
+        p.OnDelete = value;
+        SessionSet(InstanceId() + ".p", p);
+        }
+      }
+    public on_save_type OnSave
+      //
+      // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object
+      // that may not have been garbage collected.
+      //
+      {
+      set
+        {
+        p.OnSave = value;
+        SessionSet(InstanceId() + ".p", p);
+        }
+      }
+    public string path
+      {
+      get
+        {
+        return p.path;
+        }
+      set
+        {
+        p.path = value;
+        SessionSet(InstanceId() + ".p", p);
+        }
       }
 
-    public TWebUserControl_attachment_explorer Fresh()
-      {
-      Session.Remove(InstanceId() + ".p");
-      return this;
-      }
-
-    public void Bind(string path)
+    public void Bind(string path = k.EMPTY)
       {
       if (path.Length > 0)
         {
@@ -268,65 +337,10 @@ namespace UserControl_attachment_explorer
       p.be_empty = ((p.directory_file_string_array == null) || (p.directory_file_string_array.Length == 0));
       }
 
-    public void Bind()
+    public TWebUserControl_attachment_explorer Fresh()
       {
-      Bind(k.EMPTY);
-      }
-
-    private void GridView_attachments_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
-      {
-      TableCell tablecell_spacer;
-      if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-        ((e.Row.Cells[UserControl_attachment_explorer_Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[UserControl_attachment_explorer_Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text)
-        + System.IO.Path.GetFileName(e.Row.Cells[UserControl_attachment_explorer_Static.TCI_ITEM_INITIALLY].Text);
-        ((e.Row.Cells[UserControl_attachment_explorer_Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[UserControl_attachment_explorer_Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text);
-        e.Row.Cells[UserControl_attachment_explorer_Static.TCI_ITEM_INITIALLY].Visible = false;
-        tablecell_spacer = new TableCell();
-        tablecell_spacer.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        e.Row.Cells.AddAt(UserControl_attachment_explorer_Static.TCI_DELETE_INITIALLY, tablecell_spacer);
-        e.Row.Cells[UserControl_attachment_explorer_Static.TCI_DELETE_SUBSEQUENTLY].Visible = p.be_ok_to_delete;
-        }
-      }
-
-    private void GridView_attachments_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
-      {
-      var fullspec = p.directory_file_string_array[e.RowIndex];
-      var basespec = System.IO.Path.GetFileName(fullspec);
-      System.IO.File.Delete(fullspec);
-      if (p.OnDelete != null)
-        {
-        p.OnDelete(basespec);
-        }
-      Bind();
-      }
-
-    protected void Button_upload_Click(object sender, System.EventArgs e)
-      {
-      //
-      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified by
-      // p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use simple file
-      // sharing" checkbox.
-      //
-      if (FileUpload_control.HasFile)
-        {
-        if (!System.IO.Directory.Exists(p.path))
-          {
-          System.IO.Directory.CreateDirectory(p.path);
-          }
-        var basename = System.IO.Path.GetFileName(FileUpload_control.FileName);
-        FileUpload_control.SaveAs(p.path + "\\" + basename);
-        if (p.OnSave != null)
-          {
-          p.OnSave(basename);
-          }
-        Bind();
-        }
-      }
-
-    protected void GridView_attachments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-      {
-      FileDownload(Page, p.directory_file_string_array[e.NewSelectedIndex]);
+      Session.Remove(InstanceId() + ".p");
+      return this;
       }
 
     } // end TWebUserControl_attachment_explorer
