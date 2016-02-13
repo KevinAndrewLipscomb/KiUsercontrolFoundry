@@ -1,4 +1,5 @@
 using kix;
+using System.Configuration;
 using System.IO;
 using System.Web.UI.WebControls;
 
@@ -31,6 +32,7 @@ namespace UserControl_attachment_explorer
       {
       public bool be_empty;
       public bool be_enabled;
+      public bool be_for_persistence;
       public bool be_loaded;
       public bool be_ok_to_add;
       public bool be_ok_to_delete;
@@ -47,9 +49,13 @@ namespace UserControl_attachment_explorer
       TableCell tablecell_spacer;
       if (e.Row.RowType == DataControlRowType.DataRow)
         {
-        ((e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0]) as LinkButton).Text)
-        + System.IO.Path.GetFileName(e.Row.Cells[Static.TCI_ITEM_INITIALLY].Text);
-        ((e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text = k.ExpandTildePath(((e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0]) as LinkButton).Text);
+        var link_button = e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0] as LinkButton;
+        link_button.Text = k.ExpandAsperand((e.Row.Cells[Static.TCI_LINKBUTTON].Controls[0] as LinkButton).Text) + Path.GetFileName(e.Row.Cells[Static.TCI_ITEM_INITIALLY].Text);
+        if (p.be_for_persistence)
+          {
+          link_button.Attributes["href"] = e.Row.Cells[Static.TCI_ITEM_INITIALLY].Text.Replace(Server.MapPath("~"),ConfigurationManager.AppSettings["runtime_root_fullspec"].TrimEnd(new char[] {'/'})).Replace('\\','/');
+          }
+        (e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0] as LinkButton).Text = k.ExpandTildePath((e.Row.Cells[Static.TCI_DELETE_INITIALLY].Controls[0] as LinkButton).Text);
         e.Row.Cells[Static.TCI_ITEM_INITIALLY].Visible = false;
         tablecell_spacer = new TableCell();
         tablecell_spacer.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -61,8 +67,8 @@ namespace UserControl_attachment_explorer
     private void GridView_attachments_RowDeleting(object sender, GridViewDeleteEventArgs e)
       {
       var fullspec = p.directory_file_string_array[e.RowIndex];
-      var basespec = System.IO.Path.GetFileName(fullspec);
-      System.IO.File.Delete(fullspec);
+      var basespec = Path.GetFileName(fullspec);
+      File.Delete(fullspec);
       if (p.OnDelete != null)
         {
         p.OnDelete(basespec);
@@ -212,6 +218,7 @@ namespace UserControl_attachment_explorer
         {
         p.be_empty = true;
         p.be_enabled = true;
+        p.be_for_persistence = false;
         p.be_loaded = false;
         p.be_ok_to_add = false;
         p.be_ok_to_delete = false;
@@ -243,6 +250,18 @@ namespace UserControl_attachment_explorer
       get
         {
         return p.be_empty;
+        }
+      }
+    public bool be_for_persistence
+      {
+      get
+        {
+        return p.be_for_persistence;
+        }
+      set
+        {
+        p.be_for_persistence = value;
+        SessionSet(InstanceId() + ".p", p);
         }
       }
     public bool be_ok_to_add

@@ -4,7 +4,7 @@
     <td valign="middle">
       <asp:GridView id="GridView_attachments" runat="server" showheader="False" cellpadding="3" gridlines="None" onselectedindexchanging="GridView_attachments_SelectedIndexChanging">
         <Columns>
-          <asp:ButtonField commandname="Select" text="&lt;IMG src=&quot;~/usercontrol/ki/image/paperclip_16x16.gif&quot; alt=&quot;Attachment&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&amp;nbsp;"></asp:ButtonField>
+          <asp:ButtonField commandname="Select" text="&lt;IMG src=&quot;@usercontrol/ki/image/paperclip_16x16.gif&quot; alt=&quot;Attachment&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;&amp;nbsp;"></asp:ButtonField>
           <asp:CommandField deletetext="&lt;IMG src=&quot;~/usercontrol/ki/image/delete_x16_h.png&quot; alt=&quot;Delete&quot; border=&quot;0&quot; height=&quot;16&quot; width=&quot;16&quot; /&gt;" showdeletebutton="True"></asp:CommandField>
         </Columns>
       </asp:GridView>
