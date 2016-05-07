@@ -70,7 +70,11 @@
     <Content Include="js\ErrorHandler.js" />
     <Content Include="js\gradient.js" />
     <Content Include="usercontrol\ki\image\delete_x16_h.png" />
+    <Content Include="usercontrol\ki\image\go-next.png" />
     <Content Include="usercontrol\ki\image\paperclip_16x16.gif" />
+    <Content Include="usercontrol\ki\image\print-check-small.jpg" />
+    <Content Include="usercontrol\ki\image\scan-small.jpg" />
+    <Content Include="usercontrol\ki\image\sign-with-arrow.jpg" />
     <Content Include="usercontrol\ki\UserControl_about_by.ascx" />
     <Content Include="usercontrol\ki\UserControl_about_tools.ascx" />
     <Content Include="usercontrol\ki\UserControl_attachment_explorer.ascx" />
@@ -79,6 +83,9 @@
     <Content Include="usercontrol\ki\UserControl_drop_down_date.ascx" />
     <Content Include="usercontrol\ki\UserControl_drop_down_datetime.ascx" />
     <Content Include="usercontrol\ki\UserControl_drop_down_time_of_day.ascx" />
+    <Content Include="usercontrol\ki\UserControl_efficipay_intro_basic_concept.ascx" />
+    <Content Include="usercontrol\ki\UserControl_efficipay_intro_signatures.ascx" />
+    <Content Include="usercontrol\ki\UserControl_efficipay_intro_slogan.ascx" />
     <Content Include="usercontrol\ki\UserControl_iva_attachment_explorer.ascx" />
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
@@ -145,6 +152,27 @@
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_drop_down_time_of_day.ascx.designer.cs">
       <DependentUpon>UserControl_drop_down_time_of_day.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_basic_concept.ascx.cs">
+      <DependentUpon>UserControl_efficipay_intro_basic_concept.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_basic_concept.ascx.designer.cs">
+      <DependentUpon>UserControl_efficipay_intro_basic_concept.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_signatures.ascx.cs">
+      <DependentUpon>UserControl_efficipay_intro_signatures.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_signatures.ascx.designer.cs">
+      <DependentUpon>UserControl_efficipay_intro_signatures.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_slogan.ascx.cs">
+      <DependentUpon>UserControl_efficipay_intro_slogan.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_intro_slogan.ascx.designer.cs">
+      <DependentUpon>UserControl_efficipay_intro_slogan.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_iva_attachment_explorer.ascx.cs">
       <DependentUpon>UserControl_iva_attachment_explorer.ascx</DependentUpon>

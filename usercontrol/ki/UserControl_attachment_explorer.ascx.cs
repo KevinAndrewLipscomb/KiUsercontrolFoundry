@@ -192,10 +192,7 @@ namespace UserControl_attachment_explorer
           }
         var basename = Path.GetFileName(FileUpload_control.FileName);
         FileUpload_control.SaveAs(p.path + "\\" + basename);
-        if (p.OnSave != null)
-          {
-          p.OnSave(basename);
-          }
+        p.OnSave?.Invoke(basename);
         Bind();
         }
       }
