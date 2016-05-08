@@ -48,6 +48,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,12 +73,40 @@
     <Content Include="Global.asax" />
     <Content Include="js\ErrorHandler.js" />
     <Content Include="js\gradient.js" />
+    <Content Include="usercontrol\ki\image\add-docket.png" />
+    <Content Include="usercontrol\ki\image\browse.png" />
+    <Content Include="usercontrol\ki\image\check-number-entry.png" />
+    <Content Include="usercontrol\ki\image\delete-docket.png" />
     <Content Include="usercontrol\ki\image\delete_x16_h.png" />
+    <Content Include="usercontrol\ki\image\docket-content.png" />
     <Content Include="usercontrol\ki\image\go-next.png" />
+    <Content Include="usercontrol\ki\image\invoices-1.jpg" />
+    <Content Include="usercontrol\ki\image\invoices.jpg" />
+    <Content Include="usercontrol\ki\image\laser-voucher-check-on-top-1.jpg" />
+    <Content Include="usercontrol\ki\image\laser-voucher-check-on-top.jpg" />
+    <Content Include="usercontrol\ki\image\mail_check.jpg" />
+    <Content Include="usercontrol\ki\image\manage-dockets.png" />
+    <Content Include="usercontrol\ki\image\mark-ready.png" />
+    <Content Include="usercontrol\ki\image\open-docket.png" />
+    <Content Include="usercontrol\ki\image\other-uploads.png" />
     <Content Include="usercontrol\ki\image\paperclip_16x16.gif" />
+    <Content Include="usercontrol\ki\image\popup-and-dialog.png" />
     <Content Include="usercontrol\ki\image\print-check-small.jpg" />
+    <Content Include="usercontrol\ki\image\print-check.jpg" />
+    <Content Include="usercontrol\ki\image\print-final.png" />
+    <Content Include="usercontrol\ki\image\Quill-1.jpg" />
+    <Content Include="usercontrol\ki\image\Quill.jpg" />
+    <Content Include="usercontrol\ki\image\sample-final-imprint.png" />
+    <Content Include="usercontrol\ki\image\save-files-to-hard-drive.jpg" />
+    <Content Include="usercontrol\ki\image\save-to-hard-drive-b.jpg" />
+    <Content Include="usercontrol\ki\image\save-to-hard-drive.jpg" />
+    <Content Include="usercontrol\ki\image\scan-control-panel.jpg" />
     <Content Include="usercontrol\ki\image\scan-small.jpg" />
+    <Content Include="usercontrol\ki\image\scan.jpg" />
+    <Content Include="usercontrol\ki\image\select-check-file.png" />
     <Content Include="usercontrol\ki\image\sign-with-arrow.jpg" />
+    <Content Include="usercontrol\ki\image\sign.png" />
+    <Content Include="usercontrol\ki\image\upload.png" />
     <Content Include="usercontrol\ki\UserControl_about_by.ascx" />
     <Content Include="usercontrol\ki\UserControl_about_tools.ascx" />
     <Content Include="usercontrol\ki\UserControl_attachment_explorer.ascx" />
@@ -86,6 +118,7 @@
     <Content Include="usercontrol\ki\UserControl_efficipay_intro_basic_concept.ascx" />
     <Content Include="usercontrol\ki\UserControl_efficipay_intro_signatures.ascx" />
     <Content Include="usercontrol\ki\UserControl_efficipay_intro_slogan.ascx" />
+    <Content Include="usercontrol\ki\UserControl_efficipay_tutorial.ascx" />
     <Content Include="usercontrol\ki\UserControl_iva_attachment_explorer.ascx" />
     <Content Include="usercontrol\ki\UserControl_print_div.ascx" />
     <Content Include="usercontrol\ki\UserControl_session_interrupted.ascx" />
@@ -173,6 +206,13 @@
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_efficipay_intro_slogan.ascx.designer.cs">
       <DependentUpon>UserControl_efficipay_intro_slogan.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_tutorial.ascx.cs">
+      <DependentUpon>UserControl_efficipay_tutorial.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrol\ki\UserControl_efficipay_tutorial.ascx.designer.cs">
+      <DependentUpon>UserControl_efficipay_tutorial.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrol\ki\UserControl_iva_attachment_explorer.ascx.cs">
       <DependentUpon>UserControl_iva_attachment_explorer.ascx</DependentUpon>
