@@ -32,7 +32,7 @@ namespace UserControl_attachment_explorer
       {
       public bool be_empty;
       public bool be_enabled;
-      public bool be_for_persistence;
+      public bool be_for_persistence; //that is, if files should be accessible online even if the accessor is not logged into the application
       public bool be_loaded;
       public bool be_ok_to_add;
       public bool be_ok_to_delete;
@@ -69,10 +69,7 @@ namespace UserControl_attachment_explorer
       var fullspec = p.directory_file_string_array[e.RowIndex];
       var basespec = Path.GetFileName(fullspec);
       File.Delete(fullspec);
-      if (p.OnDelete != null)
-        {
-        p.OnDelete(basespec);
-        }
+      p.OnDelete?.Invoke(basespec);
       Bind();
       }
 
@@ -180,6 +177,8 @@ namespace UserControl_attachment_explorer
     protected void Button_upload_Click(object sender, System.EventArgs e)
       {
       //
+      // If the UserControl_attachment_explorer control is in an UpdatePanel, it must be specified as a PostBackTrigger for the UpdatePanel.
+      //
       // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified
       // by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use
       // simple file sharing" checkbox.
@@ -207,9 +206,10 @@ namespace UserControl_attachment_explorer
       // Required for Designer support
       InitializeComponent();
       base.OnInit(e);
-      if (IsPostBack && (Session[InstanceId() + ".p"] != null))
+      var instance_id = InstanceId();
+      if (IsPostBack && (Session[instance_id + ".p"] != null))
         {
-        p = (p_type)(Session[InstanceId() + ".p"]);
+        p = (p_type)(Session[instance_id + ".p"]);
         }
       else
         {
@@ -326,6 +326,22 @@ namespace UserControl_attachment_explorer
         }
       }
     public string path
+      //
+      // Must be set each and every time the target object is created (ie, unconditionally in Page_Load).
+      //
+      // A common pattern is to set it with some variation of the following statement:
+      //
+      //   UserControl_attachment_explorer_control.path = HttpContext.Current.Server.MapPath("attachment/ . . . );
+      //
+      // If using a distinct attachment_key as both the leaf of the path and as a field value on the associated database record, use something like the following at record creation time:
+      //
+      //   p.attachment_key = DateTime.Now.Ticks.ToString("D19");
+      //   UserControl_attachment_explorer_control.path = HttpContext.Current.Server.MapPath("attachment/{table-name}/" + p.attachment_key);
+      //
+      // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified
+      // by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use
+      // simple file sharing" checkbox.
+      //
       {
       get
         {
