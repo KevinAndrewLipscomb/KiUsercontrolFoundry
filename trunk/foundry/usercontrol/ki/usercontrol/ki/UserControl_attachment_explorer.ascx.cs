@@ -3,6 +3,18 @@ using System.Configuration;
 using System.IO;
 using System.Web.UI.WebControls;
 
+//
+// When using in the ItemTemplate of a TemplateColumn of a *sortable* DataGrid, use the following pattern:
+//
+//   attachment_explorer = ((e.Item.Cells[Static.TCI_FILES].FindControl(id:"UserControl_attachment_explorer_control")) as TWebUserControl_attachment_explorer);
+//   attachment_explorer.path = k.EMPTY;
+//   attachment_explorer.enabled = p.be_{condition};
+//   attachment_explorer.be_ok_to_add = p.be_{condition};
+//   attachment_explorer.be_ok_to_delete = p.be_{condition};
+//   attachment_explorer.Bind(HttpContext.Current.Server.MapPath("~/protected/attachment/{subfolder}/" + e.Item.Cells[Static.TCI_{KEY}].Text));
+//   ScriptManager.GetCurrent(Page).RegisterPostBackControl(attachment_explorer);
+//
+
 namespace UserControl_attachment_explorer
   {
 
@@ -182,6 +194,9 @@ namespace UserControl_attachment_explorer
       // For this to work, the IIS Worker Process (ASP.NET Machine Account (ASPNET) [on IIS5] or the NETWORK SERVICE account [on IIS7] or the IIS APPPOOL\DefaultAppPool) must have write permission for the folder specified
       // by p.path.  Configure this on the Security tab of the folder's Properties.  If the Security tab is missing, open Windows Explorer / Tools / Folder Options... / View, and in the Advanced Settings, clear the "Use
       // simple file sharing" checkbox.
+      //
+      // ALSO, if the *first* click on the Upload button has no effect, but subsequent clicks work correctly, add the 'enctype="multipart/form-data"' to the <form> tag on this usercontrol's parent page.  We have not found
+      // an effective way to do this programmatically yet.
       //
       if (FileUpload_control.HasFile)
         {
