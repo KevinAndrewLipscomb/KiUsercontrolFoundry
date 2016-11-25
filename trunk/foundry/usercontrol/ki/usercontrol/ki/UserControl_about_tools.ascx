@@ -5,6 +5,7 @@
   <li>Microsoft ASP.NET web application framework</li>
   <li>ASP.NET AJAX Control Toolkit</li>
   <li>MySQL database management system</li>
+  <li>Cygwin</li>
   <li>Subversion version control system</li>
   <li>TortoiseSVN</li>
   <li>Divlocsoft Actual Search &amp; Replace</li>
@@ -16,7 +17,6 @@
   <li>LyX document processor</li></ul>
 <p>Ancillary tools:</p>
 <ul>
-  <li>Cygwin</li>
   <li>Microsoft Windows</li>
   <li>MyLifeOrganized</li>
   <li>Natara Bonsai</li>
