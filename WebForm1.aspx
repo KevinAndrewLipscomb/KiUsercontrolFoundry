@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <%@ Page language="c#" Debug="true" Codebehind="WebForm1.aspx.cs" AutoEventWireup="True" Inherits="WebForm1.TWebForm1" %>
 <%@ Register src="usercontrol/ki/UserControl_about_by.ascx" tagname="UserControl_about_by" tagprefix="uc1" %>
 <html>
