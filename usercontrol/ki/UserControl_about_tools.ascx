@@ -24,5 +24,5 @@
   <li>PGP</li>
   <li>Rsync.net</li>
   <li>Dropbox</li>
-  <li>GNU Emacs</li>
+  <li>Visual Studio Code (phasing out GNU Emacs)</li>
 </ul>
