@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ Page language="c#" Debug="true" Codebehind="WebForm1.aspx.cs" AutoEventWireup="True" Inherits="WebForm1.TWebForm1" %>
+<%@ Page language="c#" codebehind="WebForm1.aspx.cs" AutoEventWireup="True" Inherits="WebForm1.TWebForm1" %>
 <%@ Register src="usercontrol/ki/UserControl_about_by.ascx" tagname="UserControl_about_by" tagprefix="uc1" %>
 <html>
   <head runat="server">
