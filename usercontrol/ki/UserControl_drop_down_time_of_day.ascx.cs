@@ -114,7 +114,7 @@ namespace UserControl_drop_down_time_of_day
           representation = hour.val.ToString("D2");
           DropDownList_hour.Items.Add(new ListItem(representation,representation));
           }
-        for (var minute = new k.subtype<int>(0,60); minute.val < minute.LAST; minute.val = minute.val + p.minute_intervals.val)
+        for (var minute = new k.subtype<int>(0,60); minute.val < minute.LAST; minute.val += p.minute_intervals.val)
           {
           representation = minute.val.ToString("D2");
           DropDownList_minute.Items.Add(new ListItem(representation,representation));

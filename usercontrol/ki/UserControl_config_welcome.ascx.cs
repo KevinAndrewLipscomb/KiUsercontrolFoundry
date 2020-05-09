@@ -56,9 +56,7 @@ namespace UserControl_config_welcome
         private void InitializeComponent()
         {
 
-            this.PreRender += this.TWebUserControl_config_welcome_PreRender;
-
-            //this.Load += this.Page_Load;
+            PreRender += TWebUserControl_config_welcome_PreRender;
         }
 
         private void TWebUserControl_config_welcome_PreRender(object sender, System.EventArgs e)
