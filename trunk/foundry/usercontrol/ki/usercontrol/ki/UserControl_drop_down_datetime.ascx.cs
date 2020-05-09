@@ -143,8 +143,7 @@ namespace UserControl_drop_down_datetime
     // / </summary>
     private void InitializeComponent()
       {
-      this.PreRender += this.TWebUserControl_drop_down_datetime_PreRender;
-      //this.Load += this.Page_Load;
+      PreRender += TWebUserControl_drop_down_datetime_PreRender;
       }
 
     private void TWebUserControl_drop_down_datetime_PreRender(object sender, System.EventArgs e)

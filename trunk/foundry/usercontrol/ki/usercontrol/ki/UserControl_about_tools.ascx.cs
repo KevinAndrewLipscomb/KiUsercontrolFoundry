@@ -134,9 +134,7 @@ namespace UserControl_about_tools
         private void InitializeComponent()
         {
 
-            this.PreRender += this.TWebUserControl_about_tools_PreRender;
-
-            //this.Load += this.Page_Load;
+            PreRender += TWebUserControl_about_tools_PreRender;
         }
 
         private void TWebUserControl_about_tools_PreRender(object sender, System.EventArgs e)

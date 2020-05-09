@@ -213,7 +213,7 @@ namespace UserControl_attachment_explorer
 
     protected void GridView_attachments_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
       {
-      FileDownload(Page, p.directory_file_string_array[e.NewSelectedIndex]);
+      FileDownload(filename:p.directory_file_string_array[e.NewSelectedIndex]);
       }
 
     protected override void OnInit(System.EventArgs e)

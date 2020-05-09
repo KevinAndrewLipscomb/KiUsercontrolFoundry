@@ -74,12 +74,10 @@ namespace UserControl_bread_crumb_trail
         // / </summary>
         private void InitializeComponent()
         {
-            this.DataList_trail.ItemCommand += new System.Web.UI.WebControls.DataListCommandEventHandler(this.DataList_trail_ItemCommand);
-            this.DataList_trail.ItemDataBound += new System.Web.UI.WebControls.DataListItemEventHandler(this.DataList_trail_ItemDataBound);
+            DataList_trail.ItemCommand += new System.Web.UI.WebControls.DataListCommandEventHandler(DataList_trail_ItemCommand);
+            DataList_trail.ItemDataBound += new System.Web.UI.WebControls.DataListItemEventHandler(DataList_trail_ItemDataBound);
 
-            //this.Load += this.Page_Load;
-
-            this.PreRender += this.TWebUserControl_bread_crumb_trail_PreRender;
+            PreRender += TWebUserControl_bread_crumb_trail_PreRender;
         }
 
         private void TWebUserControl_bread_crumb_trail_PreRender(object sender, System.EventArgs e)
