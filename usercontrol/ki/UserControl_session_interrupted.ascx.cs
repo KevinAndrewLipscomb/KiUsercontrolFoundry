@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+
 namespace UserControl_session_interrupted
 {
     public partial class TWebUserControl_session_interrupted: ki_web_ui.usercontrol_class
