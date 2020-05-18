@@ -1,21 +1,17 @@
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Collections;
 
 namespace UserControl_config_welcome
-{
-    public struct p_type
+  {
+  public partial class TWebUserControl_config_welcome: ki_web_ui.usercontrol_class
+    {
+
+    private struct p_type
     {
         public bool be_loaded;
-    } // end p_type
+    }
 
-    public partial class TWebUserControl_config_welcome: ki_web_ui.usercontrol_class
-    {
         private p_type p;
-        protected System.Web.UI.WebControls.Label Label_application_name = null;
+
         protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!p.be_loaded)

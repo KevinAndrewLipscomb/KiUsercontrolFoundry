@@ -2,33 +2,29 @@
 
 using kix;
 using System;
-using System.Collections;
-using System.Configuration;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using UserControl_drop_down_date;
-using UserControl_drop_down_time_of_day;
 
 namespace UserControl_drop_down_datetime
   {
   public static class UserControl_drop_down_datetime_Static
     {
-    public static int MIN_CONSISTENTLY_REPRESENTABLE_YEAR = UserControl_drop_down_date_Static.MIN_CONSISTENTLY_REPRESENTABLE_YEAR;
-    public static int MAX_CONSISTENTLY_REPRESENTABLE_YEAR = UserControl_drop_down_date_Static.MAX_CONSISTENTLY_REPRESENTABLE_YEAR;
-    public static DateTime NONE = DateTime.MinValue;
-    }
-
-  public struct p_type
-    {
-    public bool be_enabled;
-    public bool be_loaded;
-    public DateTime selected_value;
+    public const int MIN_CONSISTENTLY_REPRESENTABLE_YEAR = UserControl_drop_down_date_Static.MIN_CONSISTENTLY_REPRESENTABLE_YEAR;
+    public const int MAX_CONSISTENTLY_REPRESENTABLE_YEAR = UserControl_drop_down_date_Static.MAX_CONSISTENTLY_REPRESENTABLE_YEAR;
+    public readonly static DateTime NONE = DateTime.MinValue;
     }
 
   public partial class TWebUserControl_drop_down_datetime: ki_web_ui.usercontrol_class
     {
+
+    private struct p_type
+      {
+      public bool be_enabled;
+      public bool be_loaded;
+      public DateTime selected_value;
+      }
+
+    private p_type p;
+
     public bool enabled
       {
       get
@@ -103,8 +99,6 @@ namespace UserControl_drop_down_datetime
         p.selected_value = value;
         }
       }
-
-    private p_type p;
 
     public void Clear()
       {

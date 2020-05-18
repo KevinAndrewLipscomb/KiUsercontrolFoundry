@@ -1,21 +1,15 @@
-using kix;
-using System;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Collections;
-
 namespace UserControl_about_tools
-{
-    public struct p_type
+  {
+  public partial class TWebUserControl_about_tools: ki_web_ui.usercontrol_class
+    {
+
+    private struct p_type
     {
         public bool be_loaded;
-    } // end p_type
+    }
 
-    public partial class TWebUserControl_about_tools: ki_web_ui.usercontrol_class
-    {
         private p_type p;
+
         private void InjectPersistentClientSideScript()
         {
             // EstablishClientSideFunction(k.client_side_function_enumeral_type.EL);

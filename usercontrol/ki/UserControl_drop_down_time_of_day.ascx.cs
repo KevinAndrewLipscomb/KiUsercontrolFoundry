@@ -33,9 +33,10 @@ namespace UserControl_drop_down_time_of_day
       PreRender += TWebUserControl_drop_down_time_of_day_PreRender;
       }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types")]
     private void SetChildSelectedValues()
       {
-      if (p.selected_value == k.EMPTY)
+      if (p.selected_value.Length == 0)
         {
         Clear();
         }
@@ -119,12 +120,12 @@ namespace UserControl_drop_down_time_of_day
           representation = minute.val.ToString("D2");
           DropDownList_minute.Items.Add(new ListItem(representation,representation));
           }
-        if ((p.selected_value == k.EMPTY) || p.be_clearable)
+        if ((p.selected_value.Length == 0) || p.be_clearable)
           {
           DropDownList_hour.Items.Insert(0, new ListItem("",""));
           DropDownList_minute.Items.Insert(0, new ListItem("",""));
           }
-        if (p.selected_value != k.EMPTY)
+        if (p.selected_value.Length > 0)
           {
           SetChildSelectedValues();
           }
@@ -188,7 +189,7 @@ namespace UserControl_drop_down_time_of_day
         {
         var hour = k.Safe(DropDownList_hour.SelectedValue,k.safe_hint_type.NUM);
         var minute = k.Safe(DropDownList_minute.SelectedValue,k.safe_hint_type.NUM);
-        if ((hour != k.EMPTY) && (minute != k.EMPTY))
+        if ((hour.Length > 0) && (minute.Length > 0))
           {
           return hour + ":" + minute;
           }
