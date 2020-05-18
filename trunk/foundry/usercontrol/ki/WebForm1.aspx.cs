@@ -12,7 +12,7 @@ using System.Configuration;
 
 namespace WebForm1
 {
-    public partial class TWebForm1: System.Web.UI.Page
+    public partial class TWebForm1: ki_web_ui.page_class
     {
 
         // / <summary>

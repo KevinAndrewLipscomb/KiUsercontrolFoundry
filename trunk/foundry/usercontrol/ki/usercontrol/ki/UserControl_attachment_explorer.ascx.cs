@@ -316,6 +316,8 @@ namespace UserControl_attachment_explorer
         SessionSet(InstanceId() + ".p", p);
         }
       }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1044:Properties should not be write only")]
     public on_delete_type OnDelete
       //
       // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object
@@ -328,6 +330,7 @@ namespace UserControl_attachment_explorer
         SessionSet(InstanceId() + ".p", p);
         }
       }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1044:Properties should not be write only")]
     public on_save_type OnSave
       //
       // Must be set to point to the target object method each and every time the target object is created (ie, unconditionally in Page_Load), otherwise this attribute will be a dangling pointer to an out-of-context object

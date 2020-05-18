@@ -9,7 +9,7 @@ namespace UserControl_drop_down_date
       {
       public const int MIN_CONSISTENTLY_REPRESENTABLE_YEAR = 1000; // Driven by MySQL DATETIME type and .Net DateTime type
       public const int MAX_CONSISTENTLY_REPRESENTABLE_YEAR = 9999; // Driven by MySQL DATETIME type
-      public static DateTime NONE = DateTime.MinValue; // Driven by MySQL DATETIME type and .Net DateTime type
+      public readonly static DateTime NONE = DateTime.MinValue; // Driven by MySQL DATETIME type and .Net DateTime type
       }
 
   public partial class TWebUserControl_drop_down_date: ki_web_ui.usercontrol_class
@@ -197,6 +197,8 @@ namespace UserControl_drop_down_date
         }
       }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1806:Do not ignore method results")]
     internal bool isvalid
       {
       get
