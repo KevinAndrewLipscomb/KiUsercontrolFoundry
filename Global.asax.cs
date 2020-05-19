@@ -19,7 +19,6 @@ namespace Global
             // Required for Designer support
             InitializeComponent();
             // TODO: Add any constructor code after InitializeComponent call
-
         }
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -56,12 +55,3 @@ namespace Global
     } // end TGlobal
 
 }
-
-namespace Global.Units
-  {
-  public class Global
-    {
-    } // end Global
-
-}
-
