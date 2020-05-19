@@ -54,7 +54,7 @@ namespace UserControl_attachment_explorer
       public string path;
       }
 
-    private p_type p;
+    private p_type p; // Private Parcel of Page-Pertinent Process-Persistent Parameters
 
     private void GridView_attachments_RowDataBound(object sender, GridViewRowEventArgs e)
       {
