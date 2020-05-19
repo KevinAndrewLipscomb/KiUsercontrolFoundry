@@ -4,6 +4,7 @@
   <li>Microsoft Visual Studio (C# programming language)</li>
   <li>Microsoft ASP.NET web application framework</li>
   <li>ASP.NET AJAX Control Toolkit</li>
+  <li>PeachPie PHP compiler and runtime for .NET Framework</li>
   <li>MySQL database management system</li>
   <li>Cygwin</li>
   <li>Subversion version control system</li>
