@@ -7,18 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserControl_session_interrupted {
-    
-    
-    public partial class TWebUserControl_session_interrupted {
-        
-        /// <summary>
-        /// HyperLink_login control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink_login;
+namespace UserControl_session_interrupted
+  {
+
+
+  public partial class TWebUserControl_session_interrupted
+    {
+
+    /// <summary>
+    /// HyperLink_login control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.HyperLink HyperLink_login;
     }
-}
+  }

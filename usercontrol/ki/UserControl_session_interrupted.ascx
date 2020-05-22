@@ -15,7 +15,13 @@
                 <li><p>Inactivity;</p></li>
               </ul>
             <p>As a security and integrity precaution, you have been logged out.</p>
-            <p>Please <ASP:HyperLink id="HyperLink_login" runat="server" font-bold="True" navigateurl="~/login.aspx">log in</ASP:HyperLink> again to continue using the application.</p>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <p>Please</p>
+            <p><ASP:HyperLink id="HyperLink_login" runat="server" font-bold="True" navigateurl="~/login.aspx" BackColor="Silver" Font-Size="XX-Large" Width="66%" style="padding:20px">LOG&nbsp;IN</ASP:HyperLink></p>
+            <p>again to continue using the application</p>
           </td>
         </tr>
       </table>
