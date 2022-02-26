@@ -21,7 +21,4 @@
       </big>
     </td>
   </tr>
-  <tr>
-    <td align="center"><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size:1.618em;"><b>Immediate activation then <span style="font-size:1.618em;">$79</span>/year, invoiced</b></span></td>
-  </tr>
 </table>
