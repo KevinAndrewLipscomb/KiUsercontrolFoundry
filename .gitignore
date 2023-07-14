@@ -1,0 +1,6 @@
+*.user
+/.svn
+/.vs
+/lib
+/obj
+/packages
