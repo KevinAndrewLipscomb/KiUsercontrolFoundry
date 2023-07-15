@@ -2,6 +2,12 @@
 *.user
 /.svn
 /.vs
+/bin/*.dll.config
+/bin/*.xml
+/bin/KiUsercontrolFoundry.dll
+/bin/KiUsercontrolFoundry.pdb
+/bin/Newtonsoft.Json.dll
+/bin/System.Web.Http.dll
 /lib
 /obj
 /packages
