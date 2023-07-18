@@ -82,6 +82,7 @@
     <Content Include="Global.asax" />
     <Content Include="js\ErrorHandler.js" />
     <Content Include="js\gradient.js" />
+    <Content Include="lib\000-README-IF-COMPILING.html" />
     <Content Include="usercontrol\ki\image\add-docket.png" />
     <Content Include="usercontrol\ki\image\browse.png" />
     <Content Include="usercontrol\ki\image\check-number-entry.png" />
@@ -246,7 +247,6 @@
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
