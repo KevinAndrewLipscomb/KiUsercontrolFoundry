@@ -1,3 +1,4 @@
+using ki.web_ui;
 using kix;
 using System;
 using System.Web.UI.WebControls;
@@ -5,7 +6,7 @@ using System.Web.UI.WebControls;
 namespace UserControl_drop_down_time_of_day
   {
 
-  public partial class TWebUserControl_drop_down_time_of_day: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_drop_down_time_of_day : usercontrol_class
     {
 
     //-

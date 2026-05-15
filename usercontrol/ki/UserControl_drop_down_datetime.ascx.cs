@@ -1,5 +1,6 @@
 // Derived from UserControl~template~std.ascx.cs~template
 
+using ki.web_ui;
 using kix;
 using System;
 using UserControl_drop_down_date;
@@ -13,7 +14,7 @@ namespace UserControl_drop_down_datetime
     public readonly static DateTime NONE = DateTime.MinValue;
     }
 
-  public partial class TWebUserControl_drop_down_datetime: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_drop_down_datetime : usercontrol_class
     {
 
     private struct p_type

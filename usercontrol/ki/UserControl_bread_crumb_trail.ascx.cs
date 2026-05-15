@@ -1,3 +1,4 @@
+using ki.web_ui;
 using System;
 using System.Collections;
 using System.IO;
@@ -5,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace UserControl_bread_crumb_trail
   {
-    public partial class TWebUserControl_bread_crumb_trail: ki_web_ui.usercontrol_class
+    public partial class TWebUserControl_bread_crumb_trail: usercontrol_class
     {
     private struct p_type
       {

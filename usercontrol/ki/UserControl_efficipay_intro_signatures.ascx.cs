@@ -1,9 +1,9 @@
-using System.Configuration;
+using ki.web_ui;
 
 namespace UserControl_efficipay_intro_signatures
   {
 
-  public partial class TWebUserControl_efficipay_intro_signatures: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_efficipay_intro_signatures : usercontrol_class
     {
 
     private struct p_type

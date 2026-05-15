@@ -1,18 +1,9 @@
+using ki.web_ui;
 using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.HtmlControls;
-using System.Web.Security;
-using System.Web.UI.WebControls.WebParts;
-using System.Configuration;
 
 namespace WebForm1
 {
-    public partial class TWebForm1: ki_web_ui.page_class
+    public partial class TWebForm1 : page_class
     {
 
         // / <summary>

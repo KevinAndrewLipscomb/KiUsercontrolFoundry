@@ -1,3 +1,4 @@
+using ki.web_ui;
 using kix;
 using System.Configuration;
 using System.IO;
@@ -22,7 +23,7 @@ namespace UserControl_attachment_explorer
   public delegate void on_save_type(string basename);
 
   // [ParseChildren(ChildrenAsProperties = true)]
-  public partial class TWebUserControl_attachment_explorer: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_attachment_explorer: usercontrol_class
     {
 
     //--

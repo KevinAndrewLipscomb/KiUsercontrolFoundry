@@ -1,8 +1,8 @@
-using System.Web.UI.WebControls;
+using ki.web_ui;
 
 namespace UserControl_config_welcome
   {
-  public partial class TWebUserControl_config_welcome: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_config_welcome: usercontrol_class
     {
 
     private struct p_type

@@ -1,6 +1,8 @@
+using ki.web_ui;
+
 namespace UserControl_session_interrupted
   {
-  public partial class TWebUserControl_session_interrupted: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_session_interrupted: usercontrol_class
     {
 
     // / <summary>

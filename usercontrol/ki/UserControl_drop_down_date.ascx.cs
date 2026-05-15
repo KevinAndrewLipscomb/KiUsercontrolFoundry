@@ -1,3 +1,4 @@
+using ki.web_ui;
 using kix;
 using System;
 using System.Web.UI.WebControls;
@@ -12,7 +13,7 @@ namespace UserControl_drop_down_date
       public readonly static DateTime NONE = DateTime.MinValue; // Driven by MySQL DATETIME type and .Net DateTime type
       }
 
-  public partial class TWebUserControl_drop_down_date: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_drop_down_date: usercontrol_class
     {
 
     //--

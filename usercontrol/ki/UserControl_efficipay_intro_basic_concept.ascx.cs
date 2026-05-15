@@ -1,9 +1,9 @@
-using System.Configuration;
+using ki.web_ui;
 
 namespace UserControl_efficipay_intro_basic_concept
   {
 
-  public partial class TWebUserControl_efficipay_intro_basic_concept: ki_web_ui.usercontrol_class
+  public partial class TWebUserControl_efficipay_intro_basic_concept : usercontrol_class
     {
 
     private struct p_type

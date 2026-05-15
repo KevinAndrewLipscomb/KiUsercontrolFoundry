@@ -15,7 +15,7 @@
     <!-- -->
     <!-- The specified TargetFrameworkVersion must be installed on the ACTIVE production server. -->
     <!-- -->
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <!-- -->
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -247,6 +247,7 @@
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -256,13 +257,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="lib\ki\ki.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KiDotnetFoundation\ki.csproj">
       <Project>{a20c347b-5154-47b9-a275-36157bf73352}</Project>
       <Name>ki</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
